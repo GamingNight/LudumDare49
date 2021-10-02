@@ -9,6 +9,7 @@ public class CameraRotation : MonoBehaviour
     public bool automatique_rotation = true;
     public bool left_right_controler = true;
     public float controler_speed_coef = 30;
+    public float zoom_speed_coef = 10;
 
     private float true_speed = 0;
 
@@ -42,6 +43,8 @@ public class CameraRotation : MonoBehaviour
             {
                 true_speed = -controler_speed_coef * speed;
             }
+            float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+            Camera.main.fieldOfView = Camera.main.fieldOfView + zoom_speed_coef * scrollWheel;
         }
         transform.Rotate(0, true_speed * Time.deltaTime, 0);
 
