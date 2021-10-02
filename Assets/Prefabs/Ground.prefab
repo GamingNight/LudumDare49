@@ -65,8 +65,7 @@ MonoBehaviour:
   radiusBoundary: 6
   towerablePrefabs:
   - {fileID: 6780700540669534999, guid: a08232102daf2ed40b85d0b0eaebe61f, type: 3}
-  highlightPrefabs:
-  - {fileID: 1683310648874495798, guid: b4468c8d6f267454796d978eabca835c, type: 3}
+  ghostMaterial: {fileID: 2100000, guid: 3993e5d0f32a17341b9dedbdb40077ab, type: 2}
 --- !u!1 &533872185625835254
 GameObject:
   m_ObjectHideFlags: 0
