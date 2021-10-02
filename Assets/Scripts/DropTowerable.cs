@@ -32,6 +32,11 @@ public class DropTowerable : MonoBehaviour
                     ghostObject.GetComponent<BoxCollider>().enabled = true;
                     ghostObject.GetComponent<Rigidbody>().isKinematic = false;
                     ghostObject.GetComponent<MeshRenderer>().sharedMaterial = trueMaterial;
+                    foreach (Transform child in ghostObject.transform) {
+                        if (child.gameObject.tag == "Towerable") {
+                            child.gameObject.SetActive(true);
+                        }
+                    }
                     ghostObject.transform.parent = null;
                     InstantiateNewGhost(worldPosition);
                 } else {
@@ -56,6 +61,11 @@ public class DropTowerable : MonoBehaviour
         ghostObject.GetComponent<MeshRenderer>().sharedMaterial = ghostMaterial;
         ghostObject.GetComponent<BoxCollider>().enabled = false;
         ghostObject.GetComponent<Rigidbody>().isKinematic = true;
+        foreach (Transform child in ghostObject.transform) {
+            if (child.gameObject.tag == "Towerable") {
+                child.gameObject.SetActive(false);
+            }
+        }
         ghostObject.transform.parent = transform;
     }
 }
