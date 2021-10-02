@@ -9,7 +9,6 @@ public class DropTowerable : MonoBehaviour
 
     int currentTowerableIndex;
     GameObject ghostObject;
-    float init_origin_y = 0;
 
     void Start() {
         ghostObject = null;
@@ -42,7 +41,12 @@ public class DropTowerable : MonoBehaviour
                     if (ghostObject == null) {
                         InstantiateNewGhost(worldPosition);
                     }
-                    ghostObject.transform.localPosition = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
+                    CubeGhostTriggerCollider ghostTriggerCollider = ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>();
+                    float yPos = 0.5f;
+                    if (ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>().CollideWithTowerable()) {
+                        yPos += ghostObject.transform.parent.InverseTransformPoint(0, ghostTriggerCollider.GetHighestCollidingTowerableVal(), 0).y;
+                    }
+                    ghostObject.transform.localPosition = new Vector3(worldPosition.x, yPos, worldPosition.z);
                 }
             }
         } else {
@@ -64,9 +68,5 @@ public class DropTowerable : MonoBehaviour
             }
         }
         ghostObject.transform.parent = transform;
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        
     }
 }
