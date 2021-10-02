@@ -6,14 +6,14 @@ public class DropTowerable : MonoBehaviour
 {
     public float radiusBoundary;
     public GameObject[] towerablePrefabs;
-    public GameObject[] highlightPrefabs;
+    public Material ghostMaterial;
 
     int currentTowerableIndex;
-    GameObject highlightObject;
+    GameObject ghostObject;
+    Material trueMaterial;
 
     void Start() {
-        currentTowerableIndex = Random.Range(0, towerablePrefabs.Length);
-        highlightObject = null;
+        ghostObject = null;
     }
 
     void Update() {
@@ -29,23 +29,31 @@ public class DropTowerable : MonoBehaviour
             if (plane.Raycast(ray, out distance)) {
                 bool leftClick = Input.GetMouseButtonDown(0);
                 if (leftClick) {
-                    Destroy(highlightObject);
-                    GameObject prefab = towerablePrefabs[currentTowerableIndex];
-                    Vector3 tPosition = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
-                    Instantiate<GameObject>(prefab, tPosition, Quaternion.identity);
-                    currentTowerableIndex = Random.Range(0, towerablePrefabs.Length);
+                    ghostObject.GetComponent<BoxCollider>().enabled = true;
+                    ghostObject.GetComponent<Rigidbody>().isKinematic = false;
+                    ghostObject.GetComponent<MeshRenderer>().sharedMaterial = trueMaterial;
+                    InstantiateNewGhost(worldPosition);
                 } else {
-                    if (highlightObject == null) {
-                        GameObject prefab = highlightPrefabs[currentTowerableIndex];
-                        Vector3 position = new Vector3(worldPosition.x, 0.25f, worldPosition.z);
-                        highlightObject = Instantiate<GameObject>(prefab, position, Quaternion.identity);
+                    if (ghostObject == null) {
+                        InstantiateNewGhost(worldPosition);
                     }
-                    highlightObject.transform.position = new Vector3(worldPosition.x, 0.25f, worldPosition.z);
+                    ghostObject.transform.position = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
                 }
             }
         } else {
-            Destroy(highlightObject);
+            Destroy(ghostObject);
         }
+    }
 
+    private void InstantiateNewGhost(Vector3 worldPosition) {
+
+        currentTowerableIndex = Random.Range(0, towerablePrefabs.Length);
+        GameObject prefab = towerablePrefabs[currentTowerableIndex];
+        trueMaterial = prefab.GetComponent<MeshRenderer>().sharedMaterial;
+        Vector3 position = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
+        ghostObject = Instantiate<GameObject>(prefab, position, Quaternion.identity);
+        ghostObject.GetComponent<MeshRenderer>().sharedMaterial = ghostMaterial;
+        ghostObject.GetComponent<BoxCollider>().enabled = false;
+        ghostObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 }
