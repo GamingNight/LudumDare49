@@ -66,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundPrefabs: {fileID: 533872185589112453, guid: c2586352680f000428bdb3f5c21c0b49, type: 3}
   EnvironmentPrefabs: {fileID: 1336124870038656491, guid: 4c99319f2a70887488210578d17d1d4f, type: 3}
+  GameOverAreaPrefabs: {fileID: 3290161635899533511, guid: a170d721a3035af4189b9a0a7ab8a28e, type: 3}
   nextLevelOffset: 80
   cameraSpeed: 15
 --- !u!1 &3228001088883258424
