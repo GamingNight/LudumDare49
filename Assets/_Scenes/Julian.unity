@@ -370,6 +370,8 @@ MonoBehaviour:
   groundHeight: 0.2
   towerablePrefabs:
   - {fileID: 6780700540669534999, guid: a08232102daf2ed40b85d0b0eaebe61f, type: 3}
+  highlightPrefabs:
+  - {fileID: 1683310648874495798, guid: b4468c8d6f267454796d978eabca835c, type: 3}
 --- !u!1 &1693119666
 GameObject:
   m_ObjectHideFlags: 0
