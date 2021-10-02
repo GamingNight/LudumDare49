@@ -69,4 +69,8 @@ public class DropTowerable : MonoBehaviour
         }
         ghostObject.transform.parent = transform;
     }
+
+    private void OnTriggerEnter(Collider other) {
+        
+    }
 }
