@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DropTowerable : MonoBehaviour
 {
-    public Vector2 topLeftBoundaries;
-    public Vector2 bottomRightBoundaries;
+    public float radiusBoundary;
     public GameObject[] towerablePrefabs;
     public GameObject[] highlightPrefabs;
 
@@ -26,7 +25,7 @@ public class DropTowerable : MonoBehaviour
         if (plane.Raycast(ray, out distance)) {
             worldPosition = ray.GetPoint(distance);
         }
-        if (worldPosition.x > topLeftBoundaries.x && worldPosition.x < bottomRightBoundaries.x && worldPosition.z > bottomRightBoundaries.y && worldPosition.z < topLeftBoundaries.y) {
+        if (Mathf.Pow(worldPosition.x, 2) + Mathf.Pow(worldPosition.z, 2) < Mathf.Pow(radiusBoundary, 2)) {
             if (plane.Raycast(ray, out distance)) {
                 bool leftClick = Input.GetMouseButtonDown(0);
                 if (leftClick) {
