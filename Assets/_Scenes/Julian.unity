@@ -123,28 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &115562791 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 533872185589112453, guid: c2586352680f000428bdb3f5c21c0b49, type: 3}
-  m_PrefabInstance: {fileID: 414823978}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &115562792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115562791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 453ebc45fcef6a843987b1eb9f062aca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radiusBoundary: 6
-  towerablePrefabs:
-  - {fileID: 6780700540669534999, guid: a08232102daf2ed40b85d0b0eaebe61f, type: 3}
-  highlightPrefabs:
-  - {fileID: 1683310648874495798, guid: b4468c8d6f267454796d978eabca835c, type: 3}
 --- !u!1001 &414823978
 PrefabInstance:
   m_ObjectHideFlags: 0
