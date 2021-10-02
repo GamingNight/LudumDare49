@@ -32,12 +32,13 @@ public class DropTowerable : MonoBehaviour
                     ghostObject.GetComponent<BoxCollider>().enabled = true;
                     ghostObject.GetComponent<Rigidbody>().isKinematic = false;
                     ghostObject.GetComponent<MeshRenderer>().sharedMaterial = trueMaterial;
+                    ghostObject.transform.parent = null;
                     InstantiateNewGhost(worldPosition);
                 } else {
                     if (ghostObject == null) {
                         InstantiateNewGhost(worldPosition);
                     }
-                    ghostObject.transform.position = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
+                    ghostObject.transform.localPosition = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
                 }
             }
         } else {
@@ -55,5 +56,6 @@ public class DropTowerable : MonoBehaviour
         ghostObject.GetComponent<MeshRenderer>().sharedMaterial = ghostMaterial;
         ghostObject.GetComponent<BoxCollider>().enabled = false;
         ghostObject.GetComponent<Rigidbody>().isKinematic = true;
+        ghostObject.transform.parent = transform;
     }
 }
