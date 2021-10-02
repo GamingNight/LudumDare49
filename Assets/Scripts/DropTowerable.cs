@@ -6,11 +6,9 @@ public class DropTowerable : MonoBehaviour
 {
     public float radiusBoundary;
     public GameObject[] towerablePrefabs;
-    public Material ghostMaterial;
 
     int currentTowerableIndex;
     GameObject ghostObject;
-    Material trueMaterial;
     float init_origin_y = 0;
 
     void Start() {
@@ -32,7 +30,7 @@ public class DropTowerable : MonoBehaviour
                 if (leftClick) {
                     ghostObject.GetComponent<BoxCollider>().enabled = true;
                     ghostObject.GetComponent<Rigidbody>().isKinematic = false;
-                    ghostObject.GetComponent<MeshRenderer>().sharedMaterial = trueMaterial;
+                    ghostObject.GetComponent<Animator>().SetBool("Spawn", true);
                     foreach (Transform child in ghostObject.transform) {
                         if (child.gameObject.tag == "Towerable") {
                             child.gameObject.SetActive(true);
@@ -56,10 +54,8 @@ public class DropTowerable : MonoBehaviour
 
         currentTowerableIndex = Random.Range(0, towerablePrefabs.Length);
         GameObject prefab = towerablePrefabs[currentTowerableIndex];
-        trueMaterial = prefab.GetComponent<MeshRenderer>().sharedMaterial;
         Vector3 position = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
         ghostObject = Instantiate<GameObject>(prefab, position, Quaternion.identity);
-        ghostObject.GetComponent<MeshRenderer>().sharedMaterial = ghostMaterial;
         ghostObject.GetComponent<BoxCollider>().enabled = false;
         ghostObject.GetComponent<Rigidbody>().isKinematic = true;
         foreach (Transform child in ghostObject.transform) {
