@@ -7,8 +7,8 @@ public class levelManager : MonoBehaviour
 
     public GameObject groundPrefabs;
     public GameObject EnvironmentPrefabs;
-    public int nextLevelOffset = 120;
-    public float cameraSpeed = 150;
+    public int nextLevelOffset = 80;
+    public float cameraSpeed = 15;
 
     private float deathCount = 0;
     private bool cameraIsMoving = false;
@@ -54,8 +54,6 @@ public class levelManager : MonoBehaviour
         deathCount = deathCount + 1;
         Vector3 new_position = Vector3.zero;
         new_position.y = new_position.y - deathCount * nextLevelOffset;
-        Debug.Log ("new_position.y");
-        Debug.Log (new_position.y);
         nextEnvironment = Instantiate<GameObject>(EnvironmentPrefabs, new_position, Quaternion.identity);
         nextGround = Instantiate<GameObject>(groundPrefabs, new_position, Quaternion.identity);
 

@@ -11,6 +11,7 @@ public class DropTowerable : MonoBehaviour
     int currentTowerableIndex;
     GameObject ghostObject;
     Material trueMaterial;
+    float init_origin_y = 0;
 
     void Start() {
         ghostObject = null;
@@ -19,7 +20,7 @@ public class DropTowerable : MonoBehaviour
     void Update() {
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane plane = new Plane(Vector3.up, 0);
+        Plane plane = new Plane(Vector3.up, transform.position);
         float distance;
         Vector3 worldPosition = Vector3.zero;
         if (plane.Raycast(ray, out distance)) {
