@@ -6,14 +6,17 @@ public class TuyereImpactAudioPlayer : MonoBehaviour
 {
 
     private AudioSource audioSource;
+    private bool played;
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
+        played = false;
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Ground") {
+        if (!played && collision.gameObject.tag == "Ground") {
             audioSource.Play();
+            played = true;
         }
     }
 }
