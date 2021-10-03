@@ -14,8 +14,11 @@ public class CollectableManager : MonoBehaviour
     public GameObject collectablePrefab;
     public float popupMaxRadius;
     public float heightBetweenItems;
+    
     private int nbItemCollected;
     private float initHeight;
+    private float heightOffset;
+    private int lastDeathCount;
 
     private void Awake() {
         if (instance == null) {
@@ -25,8 +28,23 @@ public class CollectableManager : MonoBehaviour
 
     private void Start() {
         nbItemCollected = 0;
-        initHeight = 1;
+        heightOffset = 1;
+        lastDeathCount = 0;
+        Init();
+    }
+
+    private void Init() {
+        nbItemCollected = 0;
+        initHeight = heightOffset - (levelManager.GetInstance().nextLevelOffset * levelManager.GetInstance().GetDeathCount());
         InstantiateNewCollectable();
+    }
+
+    private void Update() {
+        int deatCount = levelManager.GetInstance().GetDeathCount();
+        if (lastDeathCount != deatCount) {
+            Init();
+            lastDeathCount = deatCount;
+        }
     }
 
     public void CollectItem(GameObject collectable) {

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class levelManager : MonoBehaviour
 {
+    private static levelManager instance;
+
+    public static levelManager GetInstance() {
+        return instance;
+    }
 
     public GameObject groundPrefabs;
     public GameObject EnvironmentPrefabs;
@@ -12,9 +17,9 @@ public class levelManager : MonoBehaviour
     public int nextLevelOffset = 80;
     public float cameraSpeed = 15;
 
-    private float deathCount = 0;
+    private int deathCount = 0;
     private bool cameraIsMoving = false;
-    private float PositionYTarget;
+    private float positionYTarget;
     private GameObject currentGround = null;
     private GameObject currentEnvironment = null;
     private GameObject currentGameOverArea = null;
@@ -22,53 +27,51 @@ public class levelManager : MonoBehaviour
     private GameObject nextGround = null;
     private GameObject nextEnvironment = null;
 
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         currentEnvironment = Instantiate<GameObject>(EnvironmentPrefabs, Vector3.zero, Quaternion.identity);
         currentGround = Instantiate<GameObject>(groundPrefabs, Vector3.zero, Quaternion.identity);
-        
+
         Vector3 gameOverAreaPosition = Vector3.zero;
         gameOverAreaPosition.y = gameOverAreaPosition.y - 10;
         currentGameOverArea = Instantiate<GameObject>(GameOverAreaPrefabs, gameOverAreaPosition, Quaternion.identity);
         TriggerGameOver triggerGameOver = currentGameOverArea.GetComponent<TriggerGameOver>();
         triggerGameOver.setLevelManager(this);
-        
+
         Vector3 terminatorPosition = Vector3.zero;
         terminatorPosition.y = terminatorPosition.y - 150;
         currentTerminator = Instantiate<GameObject>(TerminatorPrefabs, terminatorPosition, Quaternion.identity);
 
 
 
-        PositionYTarget = transform.position.y;
+        positionYTarget = transform.position.y;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
-        if (transform.position.y > PositionYTarget)
-        {
+        if (transform.position.y > positionYTarget) {
             transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * cameraSpeed);
             return;
-        }
-        else if (cameraIsMoving)
-        {
+        } else if (cameraIsMoving) {
             OnArrive2TheNextLevel();
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
+        if (Input.GetKeyDown(KeyCode.A)) {
             onGameOver();
         }
     }
 
-    public void onGameOver()
-    {
+    public void onGameOver() {
         // Already trigged
-        if (cameraIsMoving)
-        {
+        if (cameraIsMoving) {
             return;
         }
         cameraIsMoving = true;
@@ -78,11 +81,10 @@ public class levelManager : MonoBehaviour
         nextEnvironment = Instantiate<GameObject>(EnvironmentPrefabs, new_position, Quaternion.identity);
         nextGround = Instantiate<GameObject>(groundPrefabs, new_position, Quaternion.identity);
 
-        PositionYTarget = PositionYTarget - nextLevelOffset;
+        positionYTarget = positionYTarget - nextLevelOffset;
     }
 
-    private void OnArrive2TheNextLevel()
-    {
+    private void OnArrive2TheNextLevel() {
         cameraIsMoving = false;
 
         // delete by Terminator
@@ -94,7 +96,7 @@ public class levelManager : MonoBehaviour
         currentEnvironment = nextEnvironment;
         nextGround = null;
         nextEnvironment = null;
-        
+
         Vector3 gameOverAreaPosition = Vector3.zero;
         gameOverAreaPosition.y = gameOverAreaPosition.y - deathCount * nextLevelOffset - 10;
         currentGameOverArea = Instantiate<GameObject>(GameOverAreaPrefabs, gameOverAreaPosition, Quaternion.identity);
@@ -109,8 +111,12 @@ public class levelManager : MonoBehaviour
 
     }
 
-    private void popLevel(float depth)
-    {
+    public int GetDeathCount() {
+
+        return deathCount;
+    }
+
+    private void popLevel(float depth) {
 
     }
 
