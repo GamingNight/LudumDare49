@@ -18,17 +18,13 @@ public class MetalSqueakAudioPlayer : MonoBehaviour
         if (angle < 2) {
             phase = 0;
         } else if (angle > 2 && phase == 0) {
-            audioSource.clip = squeaks[0];
-            audioSource.Play();
-            phase = 1;
-        } else if (angle > 10 && phase == 1) {
             audioSource.clip = squeaks[2];
             audioSource.Play();
-            phase = 2;
-        } else if (angle > 20 && phase == 2) {
+            phase = 1;
+        } else if (angle > 20 && phase == 1) {
             audioSource.clip = squeaks[3];
             audioSource.Play();
-            phase = 3;
+            phase = 2;
         }
     }
 }
