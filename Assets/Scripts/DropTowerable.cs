@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,10 +29,12 @@ public class DropTowerable : MonoBehaviour
                 bool leftClick = Input.GetMouseButtonDown(0);
                 if (leftClick) {
                     if (ghostObject != null) {
-                        ghostObject.GetComponent<BoxCollider>().enabled = true;
-                        ghostObject.GetComponent<Rigidbody>().isKinematic = false;
-                        ghostObject.GetComponent<Animator>().SetBool("Spawn", true);
-                        foreach (Transform child in ghostObject.transform) {
+                        TowerableData data = ghostObject.GetComponent<TowerableData>();
+                        Type colliderType = data.GetColliderType();
+                        ((Collider)data.mainObject.GetComponent(colliderType)).enabled = true;
+                        data.mainObject.GetComponent<Rigidbody>().isKinematic = false;
+                        data.mainObject.GetComponent<Animator>().SetBool("Spawn", true);
+                        foreach (Transform child in data.mainObject.transform) {
                             if (child.gameObject.tag == "Towerable") {
                                 child.gameObject.SetActive(true);
                             }
@@ -44,9 +47,13 @@ public class DropTowerable : MonoBehaviour
                         InstantiateNewGhost(worldPosition);
                     }
                     CubeGhostTriggerCollider ghostTriggerCollider = ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>();
-                    float yPos = 0.5f;
+                    float yPos = 0.1f;
                     if (ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>().CollideWithTowerable()) {
                         yPos += ghostObject.transform.parent.InverseTransformPoint(0, ghostTriggerCollider.GetHighestCollidingTowerableVal(), 0).y;
+                        Debug.Log("A");
+                        //Debug.Break();
+                    } else {
+                        Debug.Log("B");
                     }
                     ghostObject.transform.localPosition = new Vector3(worldPosition.x, yPos, worldPosition.z);
                 }
@@ -58,13 +65,15 @@ public class DropTowerable : MonoBehaviour
 
     private void InstantiateNewGhost(Vector3 worldPosition) {
 
-        currentTowerableIndex = Random.Range(0, towerablePrefabs.Length);
+        currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
         GameObject prefab = towerablePrefabs[currentTowerableIndex];
-        Vector3 position = new Vector3(worldPosition.x, 0.75f, worldPosition.z);
+        Vector3 position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
         ghostObject = Instantiate<GameObject>(prefab, position, Quaternion.identity);
-        ghostObject.GetComponent<BoxCollider>().enabled = false;
-        ghostObject.GetComponent<Rigidbody>().isKinematic = true;
-        foreach (Transform child in ghostObject.transform) {
+        TowerableData data = ghostObject.GetComponent<TowerableData>();
+        Type colliderType = data.GetColliderType();
+        ((Collider)data.mainObject.GetComponent(colliderType)).enabled = false;
+        data.mainObject.GetComponent<Rigidbody>().isKinematic = true;
+        foreach (Transform child in data.mainObject.transform) {
             if (child.gameObject.tag == "Towerable") {
                 child.gameObject.SetActive(false);
             }
