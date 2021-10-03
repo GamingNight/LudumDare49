@@ -50,10 +50,6 @@ public class DropTowerable : MonoBehaviour
                     float yPos = 0.1f;
                     if (ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>().CollideWithTowerable()) {
                         yPos += ghostObject.transform.parent.InverseTransformPoint(0, ghostTriggerCollider.GetHighestCollidingTowerableVal(), 0).y;
-                        Debug.Log("A");
-                        //Debug.Break();
-                    } else {
-                        Debug.Log("B");
                     }
                     ghostObject.transform.localPosition = new Vector3(worldPosition.x, yPos, worldPosition.z);
                 }
