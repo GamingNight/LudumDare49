@@ -19,11 +19,10 @@ public class PauseManager : MonoBehaviour {
         foreach (AudioSource a in audioSources) {
             if (a.isPlaying) {
                 a.Pause();
-                Debug.Log("pausedAudioSources = " + pausedAudioSources);
-                Debug.Log("a = " + a);
                 pausedAudioSources.Add(a);
             }
         }
+        FindObjectOfType<DropTowerable>().enabled = false;
     }
 
     private void ResumeGame() {
@@ -32,6 +31,7 @@ public class PauseManager : MonoBehaviour {
         foreach (AudioSource a in pausedAudioSources) {
             a.UnPause();
         }
+        FindObjectOfType<DropTowerable>().enabled = true;
     }
 
     // Update is called once per frame
