@@ -17,17 +17,21 @@ public class DeleteAll : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "canFall") {
 
-            DropTowerable script = other.gameObject.GetComponentInParent(typeof(DropTowerable)) as DropTowerable;
-            if (script != null && script.gameObject.tag == "canFall")
+            DropTowerable script1 = other.gameObject.GetComponentInParent(typeof(DropTowerable)) as DropTowerable;
+            if (script1 != null)
             {
-                Destroy(script.gameObject);
-                return;
+                Destroy(script1.gameObject);
+            }
+
+            TowerableData script2 = other.gameObject.GetComponentInParent(typeof(TowerableData)) as TowerableData;
+            if (script2 != null)
+            {
+                Destroy(script2.gameObject);
             }
 
             Destroy(other.gameObject);
-        }
+
         
     }
 }
