@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour {
+
+    public GameObject pauseCaneva;
+    public Text resumeText;
+    public Text restartText;
+    public Text quitText;
+
     private bool paused = false;
-    public GameObject pauseText;
     private List<AudioSource> pausedAudioSources;
+    private int indexSelection = 0;
+    private float prevVerticalvalue = 0;
+
 
     public void Start() {
         paused = false;
@@ -14,7 +23,7 @@ public class PauseManager : MonoBehaviour {
 
     private void PauseGame() {
         Time.timeScale = 0;
-        pauseText.SetActive(true);
+        pauseCaneva.SetActive(true);
         AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audioSources) {
             if (a.isPlaying) {
@@ -27,7 +36,7 @@ public class PauseManager : MonoBehaviour {
 
     private void ResumeGame() {
         Time.timeScale = 1;
-        pauseText.SetActive(false);
+        pauseCaneva.SetActive(false);
         foreach (AudioSource a in pausedAudioSources) {
             a.UnPause();
         }
@@ -37,13 +46,79 @@ public class PauseManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
+
             if (!paused) {
                 PauseGame();
                 paused = true;
+                FocusCursorOnvalue(0);
             } else {
                 ResumeGame();
                 paused = false;
             }
         }
+
+        if (paused)
+        {
+            float v = Input.GetAxisRaw("Vertical");
+
+            if (v != 0 && v != prevVerticalvalue) {
+                indexSelection = indexSelection - (int)v;
+                if (indexSelection < 0) {
+                    indexSelection = 2;
+                } else if (indexSelection > 2) {
+                    indexSelection = 0;
+                }
+                FocusCursorOnvalue(indexSelection);
+            }
+            prevVerticalvalue = v;
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
+                ExecuteSelection();
+            }
+        }
     }
+
+    public void FocusCursorOnvalue(int i) {
+        indexSelection = i;
+        switch (indexSelection) {
+            case 0:
+                resumeText.fontStyle = FontStyle.Bold;
+                restartText.fontStyle = FontStyle.Normal;
+                quitText.fontStyle = FontStyle.Normal;
+                break;
+            case 1:
+                resumeText.fontStyle = FontStyle.Normal;
+                restartText.fontStyle = FontStyle.Bold;
+                quitText.fontStyle = FontStyle.Normal;
+                break;
+            case 2:
+                resumeText.fontStyle = FontStyle.Normal;
+                restartText.fontStyle = FontStyle.Normal;
+                quitText.fontStyle = FontStyle.Bold;
+                break;
+            default:
+                break;
+        }
+    }
+
+    void ExecuteSelection() {
+        switch (indexSelection) {
+            case 0:
+                ResumeGame();
+                paused = false;
+                break;
+            case 1:
+                // TODO
+                break;
+            case 2:
+                Quit();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Quit() {
+        Application.Quit();
+    }
+
 }
