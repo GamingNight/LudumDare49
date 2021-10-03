@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 115562792}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: canFall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,6 @@ MonoBehaviour:
   radiusBoundary: 6
   towerablePrefabs:
   - {fileID: 6780700540669534999, guid: a08232102daf2ed40b85d0b0eaebe61f, type: 3}
-  ghostMaterial: {fileID: 2100000, guid: 3993e5d0f32a17341b9dedbdb40077ab, type: 2}
 --- !u!1 &533872185625835254
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +79,7 @@ GameObject:
   - component: {fileID: 533872185625835258}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: canFall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +176,7 @@ GameObject:
   - component: {fileID: 533872185736560514}
   m_Layer: 0
   m_Name: Bol2
-  m_TagString: Untagged
+  m_TagString: canFall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

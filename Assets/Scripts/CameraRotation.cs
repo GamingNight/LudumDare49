@@ -44,7 +44,7 @@ public class CameraRotation : MonoBehaviour
                 true_speed = -controler_speed_coef * speed;
             }
             float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
-            Camera.main.fieldOfView = Camera.main.fieldOfView + zoom_speed_coef * scrollWheel;
+            Camera.main.fieldOfView = Camera.main.fieldOfView - zoom_speed_coef * scrollWheel;
         }
         transform.Rotate(0, true_speed * Time.deltaTime, 0);
 

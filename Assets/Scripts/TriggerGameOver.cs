@@ -11,13 +11,13 @@ public class TriggerGameOver : MonoBehaviour
         if (other.gameObject.tag == "Towerable") {
             if (levelManagerScript != null)
             {
-            	levelManagerScript.onGameOver();
+                levelManagerScript.onGameOver();
             }
         }
     }
 
     public void setLevelManager(levelManager obj)
     {
-    	levelManagerScript = obj;
+        levelManagerScript = obj;
     }
 }

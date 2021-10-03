@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Towerable
   - Collectable
+  - canFall
   layers:
   - Default
   - TransparentFX

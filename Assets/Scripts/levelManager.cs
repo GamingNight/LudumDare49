@@ -8,6 +8,7 @@ public class levelManager : MonoBehaviour
     public GameObject groundPrefabs;
     public GameObject EnvironmentPrefabs;
     public GameObject GameOverAreaPrefabs;
+    public GameObject TerminatorPrefabs;
     public int nextLevelOffset = 80;
     public float cameraSpeed = 15;
 
@@ -17,6 +18,7 @@ public class levelManager : MonoBehaviour
     private GameObject currentGround = null;
     private GameObject currentEnvironment = null;
     private GameObject currentGameOverArea = null;
+    private GameObject currentTerminator = null;
     private GameObject nextGround = null;
     private GameObject nextEnvironment = null;
 
@@ -25,11 +27,18 @@ public class levelManager : MonoBehaviour
     {
         currentEnvironment = Instantiate<GameObject>(EnvironmentPrefabs, Vector3.zero, Quaternion.identity);
         currentGround = Instantiate<GameObject>(groundPrefabs, Vector3.zero, Quaternion.identity);
+        
         Vector3 gameOverAreaPosition = Vector3.zero;
         gameOverAreaPosition.y = gameOverAreaPosition.y - 10;
         currentGameOverArea = Instantiate<GameObject>(GameOverAreaPrefabs, gameOverAreaPosition, Quaternion.identity);
         TriggerGameOver triggerGameOver = currentGameOverArea.GetComponent<TriggerGameOver>();
         triggerGameOver.setLevelManager(this);
+        
+        Vector3 terminatorPosition = Vector3.zero;
+        terminatorPosition.y = terminatorPosition.y - 150;
+        currentTerminator = Instantiate<GameObject>(TerminatorPrefabs, terminatorPosition, Quaternion.identity);
+
+
 
         PositionYTarget = transform.position.y;
     }
@@ -75,19 +84,28 @@ public class levelManager : MonoBehaviour
     private void OnArrive2TheNextLevel()
     {
         cameraIsMoving = false;
-        Destroy(currentGround);
+
+        // delete by Terminator
+        //Destroy(currentGround);
         Destroy(currentEnvironment);
+        Destroy(currentGameOverArea);
         Destroy(currentGameOverArea);
         currentGround = nextGround;
         currentEnvironment = nextEnvironment;
         nextGround = null;
         nextEnvironment = null;
-        Vector3 new_position = Vector3.zero;
-        new_position.y = new_position.y - deathCount * nextLevelOffset - 10;
-        currentGameOverArea = Instantiate<GameObject>(GameOverAreaPrefabs, new_position, Quaternion.identity);
+        
+        Vector3 gameOverAreaPosition = Vector3.zero;
+        gameOverAreaPosition.y = gameOverAreaPosition.y - deathCount * nextLevelOffset - 10;
+        currentGameOverArea = Instantiate<GameObject>(GameOverAreaPrefabs, gameOverAreaPosition, Quaternion.identity);
         TriggerGameOver triggerGameOver = currentGameOverArea.GetComponent<TriggerGameOver>();
         triggerGameOver.setLevelManager(this);
 
+        GameObject oldTerminator = currentTerminator;
+        Vector3 terminatorPosition = Vector3.zero;
+        terminatorPosition.y = terminatorPosition.y - deathCount * nextLevelOffset - 150;
+        currentTerminator = Instantiate<GameObject>(TerminatorPrefabs, terminatorPosition, Quaternion.identity);
+        Destroy(oldTerminator);
 
     }
 
