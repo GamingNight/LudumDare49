@@ -17,7 +17,6 @@ public class DeleteAll : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("DELETE " + other.gameObject.name + " TAG " + other.gameObject.tag);
         if (other.gameObject.tag == "canFall") {
 
             DropTowerable script = other.gameObject.GetComponentInParent(typeof(DropTowerable)) as DropTowerable;
