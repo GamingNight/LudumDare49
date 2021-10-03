@@ -9,6 +9,7 @@ public class DropTowerable : MonoBehaviour
     public GameObject[] towerablePrefabs;
 
     int currentTowerableIndex;
+    Quaternion currentTowerableQuaternion;
     GameObject ghostObject;
 
     public Material ghostMaterial;
@@ -17,6 +18,7 @@ public class DropTowerable : MonoBehaviour
     void Start() {
         ghostObject = null;
         plainMaterial = null;
+        currentTowerableQuaternion = Quaternion.identity;
     }
 
     void Update() {
@@ -45,11 +47,16 @@ public class DropTowerable : MonoBehaviour
                         }
                         ghostObject.transform.parent = null;
                         data.mainObject.GetComponent<MeshRenderer>().sharedMaterial = plainMaterial;
-                        InstantiateNewGhost(worldPosition);
+
+                        currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
+                        currentTowerableQuaternion = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
+                        GameObject prefab = towerablePrefabs[currentTowerableIndex];
+                        InstantiateNewGhost(worldPosition, prefab, currentTowerableQuaternion);
                     }
                 } else {
                     if (ghostObject == null) {
-                        InstantiateNewGhost(worldPosition);
+                        GameObject prefab = towerablePrefabs[currentTowerableIndex];
+                        InstantiateNewGhost(worldPosition, prefab, currentTowerableQuaternion);
                     }
                     CubeGhostTriggerCollider ghostTriggerCollider = ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>();
                     float yPos = 0.1f;
@@ -64,12 +71,10 @@ public class DropTowerable : MonoBehaviour
         }
     }
 
-    private void InstantiateNewGhost(Vector3 worldPosition) {
+    private void InstantiateNewGhost(Vector3 worldPosition, GameObject prefab, Quaternion quaternion) {
 
-        currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
-        GameObject prefab = towerablePrefabs[currentTowerableIndex];
         Vector3 position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
-        ghostObject = Instantiate<GameObject>(prefab, position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        ghostObject = Instantiate<GameObject>(prefab, position, quaternion);
         TowerableData data = ghostObject.GetComponent<TowerableData>();
         Type colliderType = data.GetColliderType();
         ((Collider)data.mainObject.GetComponent(colliderType)).enabled = false;
