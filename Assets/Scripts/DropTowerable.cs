@@ -8,16 +8,20 @@ public class DropTowerable : MonoBehaviour
     public float radiusBoundary;
     public GameObject[] towerablePrefabs;
     public AudioClip[] clickSounds;
+    public GameObject[] titleLetters;
 
     int currentTowerableIndex;
     Quaternion currentTowerableQuaternion;
     GameObject ghostObject;
     AudioSource audioSource;
+    bool firstClick;
 
     void Start() {
         ghostObject = null;
         currentTowerableQuaternion = Quaternion.identity;
         audioSource = GetComponent<AudioSource>();
+        firstClick = true;
+        currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
     }
 
     void Update() {
@@ -43,6 +47,13 @@ public class DropTowerable : MonoBehaviour
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                         audioSource.clip = clickSounds[UnityEngine.Random.Range(0, clickSounds.Length)];
                         audioSource.Play();
+                        if (firstClick) {
+                            foreach(GameObject letter in titleLetters) {
+                                letter.GetComponent<Animator>().SetBool("Explosion", true);
+                                Destroy(letter, 3);
+                            }
+                            firstClick = false;
+                        }
                     }
                 } else {
                     if (ghostObject == null) {
