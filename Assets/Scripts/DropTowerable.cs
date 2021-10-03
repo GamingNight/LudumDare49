@@ -7,14 +7,17 @@ public class DropTowerable : MonoBehaviour
 {
     public float radiusBoundary;
     public GameObject[] towerablePrefabs;
+    public AudioClip[] clickSounds;
 
     int currentTowerableIndex;
     Quaternion currentTowerableQuaternion;
     GameObject ghostObject;
+    AudioSource audioSource;
 
     void Start() {
         ghostObject = null;
         currentTowerableQuaternion = Quaternion.identity;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -38,6 +41,8 @@ public class DropTowerable : MonoBehaviour
                         GameObject prefab = towerablePrefabs[currentTowerableIndex];
                         GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
+                        audioSource.clip = clickSounds[UnityEngine.Random.Range(0, clickSounds.Length)];
+                        audioSource.Play();
                     }
                 } else {
                     if (ghostObject == null) {
