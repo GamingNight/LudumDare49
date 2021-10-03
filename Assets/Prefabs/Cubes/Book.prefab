@@ -389,5 +389,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8051937212d6b774f810d301450ad2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainObject: {fileID: 2856641566327962272}
-  colliderType: 3
+  ghostPrefab: {fileID: 4186173403967345263, guid: c1de707f496f6664abf4d8a56f564f51, type: 3}

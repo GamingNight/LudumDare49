@@ -12,12 +12,8 @@ public class DropTowerable : MonoBehaviour
     Quaternion currentTowerableQuaternion;
     GameObject ghostObject;
 
-    public Material ghostMaterial;
-    private Material plainMaterial;
-
     void Start() {
         ghostObject = null;
-        plainMaterial = null;
         currentTowerableQuaternion = Quaternion.identity;
     }
 
@@ -35,28 +31,19 @@ public class DropTowerable : MonoBehaviour
                 bool leftClick = Input.GetMouseButtonDown(0);
                 if (leftClick) {
                     if (ghostObject != null) {
-                        TowerableData data = ghostObject.GetComponent<TowerableData>();
-                        Type colliderType = data.GetColliderType();
-                        ((Collider)data.mainObject.GetComponent(colliderType)).enabled = true;
-                        data.mainObject.GetComponent<Rigidbody>().isKinematic = false;
-                        data.mainObject.GetComponent<Animator>().SetBool("Spawn", true);
-                        foreach (Transform child in data.mainObject.transform) {
-                            if (child.gameObject.tag == "Towerable") {
-                                child.gameObject.SetActive(true);
-                            }
-                        }
-                        ghostObject.transform.parent = null;
-                        data.mainObject.GetComponent<MeshRenderer>().sharedMaterial = plainMaterial;
-
+                        Instantiate<GameObject>(towerablePrefabs[currentTowerableIndex], ghostObject.transform.position, ghostObject.transform.rotation);
+                        Destroy(ghostObject);
                         currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
                         currentTowerableQuaternion = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
                         GameObject prefab = towerablePrefabs[currentTowerableIndex];
-                        InstantiateNewGhost(worldPosition, prefab, currentTowerableQuaternion);
+                        GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
+                        InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                     }
                 } else {
                     if (ghostObject == null) {
                         GameObject prefab = towerablePrefabs[currentTowerableIndex];
-                        InstantiateNewGhost(worldPosition, prefab, currentTowerableQuaternion);
+                        GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
+                        InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                     }
                     CubeGhostTriggerCollider ghostTriggerCollider = ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>();
                     float yPos = 0.1f;
@@ -75,17 +62,6 @@ public class DropTowerable : MonoBehaviour
 
         Vector3 position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
         ghostObject = Instantiate<GameObject>(prefab, position, quaternion);
-        TowerableData data = ghostObject.GetComponent<TowerableData>();
-        Type colliderType = data.GetColliderType();
-        ((Collider)data.mainObject.GetComponent(colliderType)).enabled = false;
-        data.mainObject.GetComponent<Rigidbody>().isKinematic = true;
-        foreach (Transform child in data.mainObject.transform) {
-            if (child.gameObject.tag == "Towerable") {
-                child.gameObject.SetActive(false);
-            }
-        }
         ghostObject.transform.parent = transform;
-        plainMaterial = data.mainObject.GetComponent<MeshRenderer>().sharedMaterial;
-        data.mainObject.GetComponent<MeshRenderer>().sharedMaterial = ghostMaterial;
     }
 }

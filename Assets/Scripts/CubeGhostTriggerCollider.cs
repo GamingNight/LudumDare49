@@ -43,7 +43,7 @@ public class CubeGhostTriggerCollider : MonoBehaviour
 
         float highest = float.MinValue;
         foreach (GameObject tow in collidingTowerables) {
-            Bounds b = tow.transform.parent.GetComponent<MeshRenderer>().bounds;
+            Bounds b = tow.GetComponent<Collider>().bounds;
             float val = b.center.y + b.extents.y;
             if (val > highest)
                 highest = val;
