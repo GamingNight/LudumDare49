@@ -65,6 +65,8 @@ MonoBehaviour:
   radiusBoundary: 6
   towerablePrefabs:
   - {fileID: 8772228576844675633, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
+  - {fileID: 8772228576844675633, guid: 16b27ae653ef23949ae41e3594009a6d, type: 3}
+  - {fileID: 8772228576844675633, guid: 1c75a44d1685aaa4eb8699d8eb6281b9, type: 3}
 --- !u!1 &533872185625835254
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 533872185736560572}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.006, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 7, y: 3, z: 7}
   m_Children: []
   m_Father: {fileID: 533872185589112452}
   m_RootOrder: 1
