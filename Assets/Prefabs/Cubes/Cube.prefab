@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066570122087031737}
   - component: {fileID: 6917642677658660671}
+  - component: {fileID: 2041373926}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -90,6 +91,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainObject: {fileID: 7383291832915616553}
   colliderType: 0
+--- !u!95 &2041373926
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4066570122087031736}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de104b047c4058047a910791ed600be0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5413125266742188846
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +180,7 @@ GameObject:
   - component: {fileID: 7383291832915616555}
   - component: {fileID: 7383291832915616554}
   - component: {fileID: 7383291832915616558}
+  - component: {fileID: 7542303030114924282}
   m_Layer: 0
   m_Name: Shape
   m_TagString: canFall
@@ -262,3 +283,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &7542303030114924282
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383291832915616553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 864dd06bf68ba834c9f7f3d78378625d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
