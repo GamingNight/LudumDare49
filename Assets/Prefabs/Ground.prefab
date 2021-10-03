@@ -67,7 +67,7 @@ MonoBehaviour:
   - {fileID: 4066570122087031736, guid: 1cc9e80fcabefce46a0a47893e6b7529, type: 3}
   - {fileID: 4066570122087031736, guid: 636b8444d224dcb4cb14c962faa76051, type: 3}
   - {fileID: 4066570122087031736, guid: 3508ad8c6cde3f54c9bd50b4a99e8e0f, type: 3}
-  - {fileID: 4066570122087031736, guid: b17fa3fdb96b1d64a9dd08eb03a7a9ad, type: 3}
+  - {fileID: 4066570122087031736, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
   ghostMaterial: {fileID: 2100000, guid: ae4ab81e2b3443a408fb175827216ac1, type: 2}
 --- !u!1 &533872185625835254
 GameObject:
