@@ -11,8 +11,12 @@ public class DropTowerable : MonoBehaviour
     int currentTowerableIndex;
     GameObject ghostObject;
 
+    public Material ghostMaterial;
+    private Material plainMaterial;
+
     void Start() {
         ghostObject = null;
+        plainMaterial = null;
     }
 
     void Update() {
@@ -40,6 +44,7 @@ public class DropTowerable : MonoBehaviour
                             }
                         }
                         ghostObject.transform.parent = null;
+                        data.mainObject.GetComponent<MeshRenderer>().sharedMaterial = plainMaterial;
                         InstantiateNewGhost(worldPosition);
                     }
                 } else {
@@ -75,5 +80,7 @@ public class DropTowerable : MonoBehaviour
             }
         }
         ghostObject.transform.parent = transform;
+        plainMaterial = data.mainObject.GetComponent<MeshRenderer>().sharedMaterial;
+        data.mainObject.GetComponent<MeshRenderer>().sharedMaterial = ghostMaterial;
     }
 }

@@ -66,6 +66,8 @@ MonoBehaviour:
   towerablePrefabs:
   - {fileID: 4066570122087031736, guid: 1cc9e80fcabefce46a0a47893e6b7529, type: 3}
   - {fileID: 4066570122087031736, guid: 636b8444d224dcb4cb14c962faa76051, type: 3}
+  - {fileID: 4066570122087031736, guid: 3508ad8c6cde3f54c9bd50b4a99e8e0f, type: 3}
+  ghostMaterial: {fileID: 2100000, guid: ae4ab81e2b3443a408fb175827216ac1, type: 2}
 --- !u!1 &533872185625835254
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -640421345888577198, guid: 1716d1c8e5d970a4e994b9f13630a732, type: 3}
+  - {fileID: 2100000, guid: ab37e089e67e8dc47a5a725e298ccab5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +226,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -640421345888577198, guid: 8b18bc5b0231c4044838cf7d9b9fc0db, type: 3}
+  - {fileID: 2100000, guid: ab37e089e67e8dc47a5a725e298ccab5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
