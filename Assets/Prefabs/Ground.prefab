@@ -70,6 +70,7 @@ MonoBehaviour:
   - {fileID: 8772228576844675633, guid: 1c75a44d1685aaa4eb8699d8eb6281b9, type: 3}
   - {fileID: 8772228576844675633, guid: dda2166dabe52654a883681e58f7b6db, type: 3}
   - {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
+  - {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
 --- !u!1 &533872185625835254
 GameObject:
   m_ObjectHideFlags: 0
