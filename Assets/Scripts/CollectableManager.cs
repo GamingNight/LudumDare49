@@ -57,6 +57,9 @@ public class CollectableManager : MonoBehaviour
 
         GameObject item = Instantiate<GameObject>(collectablePrefab, transform);
         float radius = Random.Range(0f, popupMaxRadius);
+        if(nbItemCollected == 0) {
+            radius = 0;
+        }
         float angle = Random.Range(0f, 2 * Mathf.PI);
         item.transform.position = new Vector3(radius * Mathf.Cos(angle), initHeight + (heightBetweenItems * nbItemCollected), radius * Mathf.Sin(angle));
     }

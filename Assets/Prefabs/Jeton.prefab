@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3742589064661453655}
   - component: {fileID: 4088260038532560709}
   - component: {fileID: 812784507850527115}
+  - component: {fileID: -1121430426320347992}
   m_Layer: 0
   m_Name: Jeton
   m_TagString: Untagged
@@ -59,6 +60,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadcf99bac2b3a44b8f523a92c7fe207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1121430426320347992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742589064661453652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c382eda4e9aec9b4aba5d9817d0ec021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -100
 --- !u!1 &7603307496099436649
 GameObject:
   m_ObjectHideFlags: 0
