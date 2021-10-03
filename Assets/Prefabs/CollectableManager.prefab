@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188a4eda1699bc41841d852bbb4b797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectablePrefab: {fileID: 3742589064661453652, guid: b1a5baebd6df406438afb9b182d1a1ac, type: 3}
+  collectablePrefab: {fileID: 2190280804467503549, guid: 35296503de009e442a387caa24346dcf, type: 3}
   popupMaxRadius: 6
   heightBetweenItems: 1
