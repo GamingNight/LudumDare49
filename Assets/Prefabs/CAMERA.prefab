@@ -9669,6 +9669,10 @@ MonoBehaviour:
   left_right_controler: 1
   controler_speed_coef: 30
   zoom_speed_coef: 10
+  min_fov: 10
+  max_fov: 60
+  max_angle_x: 60
+  min_angle_x: -40
 --- !u!114 &3228001088877929476
 MonoBehaviour:
   m_ObjectHideFlags: 0

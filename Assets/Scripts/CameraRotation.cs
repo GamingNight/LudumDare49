@@ -72,14 +72,14 @@ public class CameraRotation : MonoBehaviour
         bool left_up = Input.GetKeyUp(KeyCode.LeftArrow);
         if (left_down || left_held || left_up)
         {
-            true_speed_y = controler_speed_coef * speed;
+            true_speed_y = -controler_speed_coef * speed;
         }
         bool right_down = Input.GetKeyDown(KeyCode.RightArrow);
         bool right_held = Input.GetKey(KeyCode.RightArrow);
         bool right_up = Input.GetKeyUp(KeyCode.RightArrow);
         if (right_down || right_held || right_up)
         {
-            true_speed_y = -controler_speed_coef * speed;
+            true_speed_y = controler_speed_coef * speed;
         }
     }
 
