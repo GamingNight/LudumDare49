@@ -57,7 +57,7 @@ public class levelManager : MonoBehaviour
     void Update() {
 
         if (transform.position.y > positionYTarget) {
-            transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * cameraSpeed);
+            transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * cameraSpeed, Space.World);
             return;
         } else if (cameraIsMoving) {
             OnArrive2TheNextLevel();

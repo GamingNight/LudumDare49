@@ -100,16 +100,16 @@ public class CameraRotation : MonoBehaviour
             Input.GetKey(KeyCode.UpArrow) ||
             Input.GetKeyUp(KeyCode.UpArrow);
 
-        bool no_vertical_control = (!set_down && !set_up);
+/*        bool no_vertical_control = (!set_down && !set_up);*/
 
         set_down = set_down && (anglesx > min_angle_x);
         set_up = set_up && (anglesx < max_angle_x);
 
-        bool return_down = (no_vertical_control && (anglesx > 1));
+/*        bool return_down = (no_vertical_control && (anglesx > 1));
         bool return_up = (no_vertical_control && (anglesx < -1));
 
         set_down = set_down || return_down;
-        set_up = set_up || return_up;
+        set_up = set_up || return_up;*/
 
         if (set_down)
         {
