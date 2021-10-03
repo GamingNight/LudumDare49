@@ -64,7 +64,7 @@ public class DropTowerable : MonoBehaviour
         currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
         GameObject prefab = towerablePrefabs[currentTowerableIndex];
         Vector3 position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
-        ghostObject = Instantiate<GameObject>(prefab, position, Quaternion.identity);
+        ghostObject = Instantiate<GameObject>(prefab, position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
         TowerableData data = ghostObject.GetComponent<TowerableData>();
         Type colliderType = data.GetColliderType();
         ((Collider)data.mainObject.GetComponent(colliderType)).enabled = false;
