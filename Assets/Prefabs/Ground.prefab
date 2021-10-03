@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusBoundary: 6
   towerablePrefabs:
+  - {fileID: 4066570122087031736, guid: 1cc9e80fcabefce46a0a47893e6b7529, type: 3}
   - {fileID: 4066570122087031736, guid: 636b8444d224dcb4cb14c962faa76051, type: 3}
 --- !u!1 &533872185625835254
 GameObject:
