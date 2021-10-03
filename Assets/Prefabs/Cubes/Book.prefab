@@ -354,7 +354,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8772228576844675632}
   - component: {fileID: 2437023328196671158}
-  - component: {fileID: 8415263742976974879}
   m_Layer: 0
   m_Name: Book
   m_TagString: Untagged
@@ -392,22 +391,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainObject: {fileID: 2856641566327962272}
   colliderType: 3
---- !u!95 &8415263742976974879
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8772228576844675633}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: de104b047c4058047a910791ed600be0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

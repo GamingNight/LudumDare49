@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ce592d8bf5ceb394e8e0e6b292e76713, type: 2}
+  - {fileID: 2100000, guid: ae4ab81e2b3443a408fb175827216ac1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,7 +170,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467330447899447049}
-  - component: {fileID: 6628579442146568920}
   - component: {fileID: 8840878804743832886}
   m_Layer: 0
   m_Name: Book Ghost
@@ -195,20 +194,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6628579442146568920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4186173403967345263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8051937212d6b774f810d301450ad2de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainObject: {fileID: 1050325982987276758}
-  colliderType: 3
 --- !u!95 &8840878804743832886
 Animator:
   serializedVersion: 3
