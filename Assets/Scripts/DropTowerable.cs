@@ -27,16 +27,18 @@ public class DropTowerable : MonoBehaviour
             if (plane.Raycast(ray, out distance)) {
                 bool leftClick = Input.GetMouseButtonDown(0);
                 if (leftClick) {
-                    ghostObject.GetComponent<BoxCollider>().enabled = true;
-                    ghostObject.GetComponent<Rigidbody>().isKinematic = false;
-                    ghostObject.GetComponent<Animator>().SetBool("Spawn", true);
-                    foreach (Transform child in ghostObject.transform) {
-                        if (child.gameObject.tag == "Towerable") {
-                            child.gameObject.SetActive(true);
+                    if (ghostObject != null) {
+                        ghostObject.GetComponent<BoxCollider>().enabled = true;
+                        ghostObject.GetComponent<Rigidbody>().isKinematic = false;
+                        ghostObject.GetComponent<Animator>().SetBool("Spawn", true);
+                        foreach (Transform child in ghostObject.transform) {
+                            if (child.gameObject.tag == "Towerable") {
+                                child.gameObject.SetActive(true);
+                            }
                         }
+                        ghostObject.transform.parent = null;
+                        InstantiateNewGhost(worldPosition);
                     }
-                    ghostObject.transform.parent = null;
-                    InstantiateNewGhost(worldPosition);
                 } else {
                     if (ghostObject == null) {
                         InstantiateNewGhost(worldPosition);
