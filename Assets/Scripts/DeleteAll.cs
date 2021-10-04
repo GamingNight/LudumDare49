@@ -19,10 +19,9 @@ public class DeleteAll : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
 
         // Find Towerable Objects
-        TowerableData script2 = other.gameObject.GetComponentInParent(typeof(TowerableData)) as TowerableData;
-        if (script2 != null)
+        if (other.gameObject.tag == "Towerable")
         {
-            Destroy(script2.gameObject);
+            Destroy(other.transform.parent.gameObject);
         }
         // Find ground
         DropTowerable script1 = other.gameObject.GetComponentInParent(typeof(DropTowerable)) as DropTowerable;
