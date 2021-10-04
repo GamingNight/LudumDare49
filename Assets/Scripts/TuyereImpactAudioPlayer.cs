@@ -8,16 +8,18 @@ public class TuyereImpactAudioPlayer : MonoBehaviour
     private AudioSource audioSource;
     private bool played;
 
-    public AudioSource smallImpactSource;
-    public AudioClip[] allAudioClip;
+    public AudioClip[] smallImpactAudioClip;
     private float initSmallImpactPitch;
     private float initSmallImpactVolume;
+
+    private bool firstSmallImpact;
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
         played = false;
         initSmallImpactPitch = audioSource.pitch;
-        initSmallImpactVolume = audioSource.volume / 3;
+        initSmallImpactVolume = audioSource.volume;
+        firstSmallImpact = true;
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -25,23 +27,18 @@ public class TuyereImpactAudioPlayer : MonoBehaviour
             audioSource.Play();
             played = true;
         }
-        if(collision.gameObject.tag == "Object") {
-            AudioSource objAuduiSource = collision.gameObject.GetComponent<AudioSource>();
-            if (objAuduiSource != null)
-            {
-                int rand = (int)Random.Range(0f, 2.99f);
-                objAuduiSource.clip = allAudioClip[rand];
-
-                objAuduiSource.pitch = initSmallImpactPitch + (0.3f * Random.Range(-1f, 1f));
-                objAuduiSource.volume = initSmallImpactVolume + (0.3f * Random.Range(-1f, 1f));
-                objAuduiSource.Play();
-
+        if (collision.gameObject.tag == "Object") {
+            AudioSource objAudioSource = collision.gameObject.GetComponent<AudioSource>();
+            if (firstSmallImpact) {
+                initSmallImpactPitch = objAudioSource.pitch;
+                initSmallImpactVolume = objAudioSource.volume;
             }
-            else
-            {
-                Debug.Log("AudioSource of "+collision.gameObject.name+" is NULLLLLLLLLLL");
+            if (objAudioSource != null) {
+                objAudioSource.clip = smallImpactAudioClip[Random.Range(0, smallImpactAudioClip.Length)];
+                objAudioSource.pitch = initSmallImpactPitch + (0.2f * Random.Range(-1f, 1f));
+                objAudioSource.volume = initSmallImpactVolume + (0.3f * Random.Range(-1f, 1f));
+                objAudioSource.Play();
             }
-
         }
     }
 }
