@@ -9,14 +9,15 @@ public class TuyereImpactAudioPlayer : MonoBehaviour
     private bool played;
 
     public AudioSource smallImpactSource;
+    public AudioClip[] allAudioClip;
     private float initSmallImpactPitch;
     private float initSmallImpactVolume;
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
         played = false;
-        initSmallImpactPitch = smallImpactSource.pitch;
-        initSmallImpactVolume = smallImpactSource.volume;
+        initSmallImpactPitch = audioSource.pitch;
+        initSmallImpactVolume = audioSource.volume / 3;
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -25,9 +26,22 @@ public class TuyereImpactAudioPlayer : MonoBehaviour
             played = true;
         }
         if(collision.gameObject.tag == "Object") {
-            smallImpactSource.pitch = initSmallImpactPitch + (0.2f * Random.Range(-1f, 1f));
-            smallImpactSource.volume = initSmallImpactVolume + (0.2f * Random.Range(-1f, 1f));
-            smallImpactSource.Play();
+            AudioSource objAuduiSource = collision.gameObject.GetComponent<AudioSource>();
+            if (objAuduiSource != null)
+            {
+                int rand = (int)Random.Range(0f, 2.99f);
+                objAuduiSource.clip = allAudioClip[rand];
+
+                objAuduiSource.pitch = initSmallImpactPitch + (0.3f * Random.Range(-1f, 1f));
+                objAuduiSource.volume = initSmallImpactVolume + (0.3f * Random.Range(-1f, 1f));
+                objAuduiSource.Play();
+
+            }
+            else
+            {
+                Debug.Log("AudioSource of "+collision.gameObject.name+" is NULLLLLLLLLLL");
+            }
+
         }
     }
 }

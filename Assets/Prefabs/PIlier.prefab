@@ -596,6 +596,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smallImpactSource: {fileID: 4000698283886007081}
+  allAudioClip:
+  - {fileID: 8300000, guid: 594de33594836d94493c9737bbac1524, type: 3}
+  - {fileID: 8300000, guid: aab1ba92ea0edd7438bdebc75afab31a, type: 3}
+  - {fileID: 8300000, guid: d0639b442178fa9479acabc0c5f78e87, type: 3}
 --- !u!82 &4099765930107290895
 AudioSource:
   m_ObjectHideFlags: 0
