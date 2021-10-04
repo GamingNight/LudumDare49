@@ -5210,6 +5210,7 @@ MonoBehaviour:
   radius: 100
   power: 90
   meche: 2
+  clip: {fileID: 8300000, guid: 3b5ef4b67b1a6214da646f870cf491ec, type: 3}
   shape: {fileID: 2856641566327962272}
   explosion: {fileID: 7736182402755273487}
 --- !u!82 &-1140416935325300511

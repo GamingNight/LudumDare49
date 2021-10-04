@@ -7,6 +7,7 @@ public class Explosion : MonoBehaviour
     public float radius;
     public float power;
     public float meche;
+    public AudioClip clip;
 
     private AudioSource audioData;
     private Rigidbody rb;
@@ -16,8 +17,7 @@ public class Explosion : MonoBehaviour
     private float timer;
     private bool exploded;
 
-    void Start()
-    {
+    void Start() {
         timer = 0;
         audioData = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
@@ -25,22 +25,21 @@ public class Explosion : MonoBehaviour
         explosion.SetActive(false);
     }
 
-    void Update()
-    {
+    void Update() {
         timer += Time.deltaTime;
 
-        if (timer > meche && !exploded)
-        {
+        if (timer > meche && !exploded) {
             Boom();
             exploded = true;
         }
     }
 
-    void Boom()
-    {
+    void Boom() {
 
         Destroy(gameObject, 2);
-
+        audioData.clip = clip;
+        audioData.volume = 0.5f;
+        audioData.pitch = 1f;
         audioData.Play();
         shape.SetActive(false);
         explosion.SetActive(true);
@@ -49,8 +48,7 @@ public class Explosion : MonoBehaviour
         //Physic
         Vector3 explosionPos = transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
-        foreach (Collider hit in colliders)
-        {
+        foreach (Collider hit in colliders) {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
             if (rb != null)
