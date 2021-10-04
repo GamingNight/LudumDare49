@@ -6,19 +6,16 @@ using UnityEngine;
 public class DropTowerable : MonoBehaviour
 {
     public float radiusBoundary;
-    public AudioClip[] clickSounds;
     public GameObject[] titleLetters;
 
     Quaternion currentTowerableQuaternion;
     GameObject ghostObject;
-    AudioSource audioSource;
     bool firstClick;
     bool noTitle;
 
     void Start() {
         ghostObject = null;
         currentTowerableQuaternion = Quaternion.identity;
-        audioSource = GetComponent<AudioSource>();
         firstClick = true;
         noTitle = levelManager.GetInstance().GetDeathCount() > 0;
         if (noTitle) {
@@ -46,11 +43,9 @@ public class DropTowerable : MonoBehaviour
                         Destroy(ghostObject);
                         TowerableManager.GetInstance().GenerateNewPrefab();
                         currentTowerableQuaternion = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
-                        GameObject prefab = TowerableManager.GetInstance().GetCurrentPrefab();
-                        GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
+                        GameObject ghostPrefab = TowerableManager.GetInstance().GetCurrentGhost();
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
-                        audioSource.clip = clickSounds[UnityEngine.Random.Range(0, clickSounds.Length)];
-                        audioSource.Play();
+                        TowerableManager.GetInstance().PlaySound();
                         if (firstClick) {
                             DestroyLetters();
                             firstClick = false;
@@ -58,8 +53,7 @@ public class DropTowerable : MonoBehaviour
                     }
                 } else {
                     if (ghostObject == null) {
-                        GameObject prefab = TowerableManager.GetInstance().GetCurrentPrefab();
-                        GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
+                        GameObject ghostPrefab = TowerableManager.GetInstance().GetCurrentGhost();
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                     }
                     CubeGhostTriggerCollider ghostTriggerCollider = ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>();

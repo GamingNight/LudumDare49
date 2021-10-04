@@ -25,7 +25,7 @@ public class TuyereImpactAudioPlayer : MonoBehaviour
             played = true;
         }
         if(collision.gameObject.tag == "Object") {
-            smallImpactSource.pitch = initSmallImpactPitch + (0.1f * Random.Range(-1f, 1f));
+            smallImpactSource.pitch = initSmallImpactPitch + (0.2f * Random.Range(-1f, 1f));
             smallImpactSource.volume = initSmallImpactVolume + (0.2f * Random.Range(-1f, 1f));
             smallImpactSource.Play();
         }

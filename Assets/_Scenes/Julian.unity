@@ -545,6 +545,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[0].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: d7c5753665725394cbaac899b5f9f064, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[1].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: c1de707f496f6664abf4d8a56f564f51, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[2].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: 0936ffa57c6216d458fcb7138b4d5064, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[3].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: d12a107d3069c8242b9f5ac7ae2de9e7, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[4].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: 1350468ce7cbf434da9ebdf9dbb506ff, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[5].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: 0c6468ff2db02554d9b849e67cbe5455, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[6].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: 0a2040b45d2c26341a311d17bf5335fe, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[7].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: fd35090447156ca459f11f49f45b3cc5, type: 3}
+    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
+      propertyPath: towerables.Array.data[8].ghost
+      value: 
+      objectReference: {fileID: 4186173403967345263, guid: ba0cd791a8b233a46b38035ae9873cc0, type: 3}
     - target: {fileID: 4509919811503915818, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
       propertyPath: m_Name
       value: TowerableManager

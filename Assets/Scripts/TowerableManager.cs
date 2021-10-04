@@ -10,9 +10,24 @@ public class TowerableManager : MonoBehaviour
         return instance;
     }
 
-    public GameObject[] towerablePrefabs;
+    [System.Serializable]
+    public struct TowerableStruct
+    {
+        public GameObject prefab;
+        public GameObject ghost;
+        public int howManyItemsToUnlock;
+    }
 
+    public TowerableStruct[] towerables;
+    public int howManyItemsToUnlockSound;
+    public AudioClip[] clickSounds;
+
+    private List<TowerableStruct> unlockedTowerables;
     private int currentPrefabIndex;
+    private AudioSource audioSource;
+    private AudioClip initSound;
+    private float initPitch;
+    private float initVolume;
 
     private void Awake() {
         if (instance == null) {
@@ -22,6 +37,10 @@ public class TowerableManager : MonoBehaviour
 
     void Start() {
 
+        audioSource = GetComponent<AudioSource>();
+        initSound = audioSource.clip;
+        initPitch = audioSource.pitch;
+        initVolume = audioSource.volume;
         Init();
     }
 
@@ -29,24 +48,45 @@ public class TowerableManager : MonoBehaviour
 
         GenerateNewPrefab();
     }
-    public List<GameObject> GetUnlockedPrefabs() {
+    private List<TowerableStruct> GetUnlockedPrefabs() {
 
-        List<GameObject> unlockedList = new List<GameObject>();
+        List<TowerableStruct> unlockedList = new List<TowerableStruct>();
 
-        foreach (GameObject obj in towerablePrefabs) {
-            if (obj.GetComponent<TowerableData>().howManyItemsToUnlock <= CollectableManager.GetInstance().GetCollectedItemCount()) {
-                unlockedList.Add(obj);
+        foreach (TowerableStruct t in towerables) {
+            if (t.howManyItemsToUnlock <= CollectableManager.GetInstance().GetCollectedItemCount()) {
+                unlockedList.Add(t);
             }
         }
         return unlockedList;
     }
 
     public void GenerateNewPrefab() {
-        currentPrefabIndex = Random.Range(0, GetUnlockedPrefabs().Count);
+        unlockedTowerables = GetUnlockedPrefabs();
+        currentPrefabIndex = Random.Range(0, unlockedTowerables.Count);
     }
 
     public GameObject GetCurrentPrefab() {
 
-        return GetUnlockedPrefabs()[currentPrefabIndex];
+        return unlockedTowerables[currentPrefabIndex].prefab;
+    }
+
+    public GameObject GetCurrentGhost() {
+
+        return unlockedTowerables[currentPrefabIndex].ghost;
+    }
+
+    public void PlaySound() {
+
+        if (howManyItemsToUnlockSound > CollectableManager.GetInstance().GetCollectedItemCount()) {
+            audioSource.clip = initSound;
+            audioSource.pitch = initPitch + (0.2f * Random.Range(-1f, 1f));
+            audioSource.volume = initVolume + (0.1f * Random.Range(-1f, 1f));
+            audioSource.Play();
+        } else {
+            audioSource.clip = clickSounds[Random.Range(0, clickSounds.Length)];
+            audioSource.pitch = initPitch;
+            audioSource.volume = initVolume;
+            audioSource.Play();
+        }
     }
 }
