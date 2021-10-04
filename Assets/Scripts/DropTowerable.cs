@@ -12,6 +12,8 @@ public class DropTowerable : MonoBehaviour
     GameObject ghostObject;
     bool firstClick;
     bool noTitle;
+    float rotationSpeed = 100;
+
 
     void Start() {
         ghostObject = null;
@@ -57,10 +59,23 @@ public class DropTowerable : MonoBehaviour
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                     }
                     CubeGhostTriggerCollider ghostTriggerCollider = ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>();
+                    
+                    bool rightClickDown = Input.GetKeyDown(KeyCode.Mouse1);
+                    bool rightClickHeld = Input.GetKey(KeyCode.Mouse1);
+                    bool rightClick = rightClickDown || rightClickHeld;
+                    Debug.Log("rightClick " + rightClick);
+                    if (rightClick)
+                    {
+                        ghostObject.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+                    }
+
                     float yPos = 0.1f;
                     if (ghostObject.GetComponentInChildren<CubeGhostTriggerCollider>().CollideWithTowerable()) {
                         yPos += ghostObject.transform.parent.InverseTransformPoint(0, ghostTriggerCollider.GetHighestCollidingTowerableVal(), 0).y;
+
+                        
                     }
+
                     ghostObject.transform.localPosition = new Vector3(worldPosition.x, yPos, worldPosition.z);
                 }
             }
