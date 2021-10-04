@@ -56,10 +56,10 @@ MonoBehaviour:
     howManyItemsToUnlock: 2
   - prefab: {fileID: 8772228576844675633, guid: e9b6a5de7c61dc84d94db1602990623f, type: 3}
     ghost: {fileID: 4186173403967345263, guid: 2b36e9951b7b5634d90551514b2d7658, type: 3}
-    howManyItemsToUnlock: 2
+    howManyItemsToUnlock: 4
   - prefab: {fileID: 8772228576844675633, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
     ghost: {fileID: 4186173403967345263, guid: d7c5753665725394cbaac899b5f9f064, type: 3}
-    howManyItemsToUnlock: 3
+    howManyItemsToUnlock: 4
   - prefab: {fileID: 8772228576844675633, guid: 16b27ae653ef23949ae41e3594009a6d, type: 3}
     ghost: {fileID: 4186173403967345263, guid: 0a2040b45d2c26341a311d17bf5335fe, type: 3}
     howManyItemsToUnlock: 4
