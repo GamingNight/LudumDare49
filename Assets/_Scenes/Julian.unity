@@ -476,18 +476,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
-      propertyPath: howManyItemsToUnlockSound
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
-      propertyPath: towerables.Array.data[3].howManyItemsToUnlock
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4509919811503915817, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
-      propertyPath: towerables.Array.data[4].howManyItemsToUnlock
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4509919811503915818, guid: fbc2c8a91ad5ba44f8bcced61440f1d1, type: 3}
       propertyPath: m_Name
       value: TowerableManager
