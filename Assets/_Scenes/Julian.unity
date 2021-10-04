@@ -423,14 +423,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectableManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3111539504016099923, guid: a7a994ad1debccc48b3a01402d6ef7f4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111539504016099925, guid: a7a994ad1debccc48b3a01402d6ef7f4, type: 3}
-      propertyPath: heightBetweenItems
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7a994ad1debccc48b3a01402d6ef7f4, type: 3}
 --- !u!1001 &3290161634417640315
