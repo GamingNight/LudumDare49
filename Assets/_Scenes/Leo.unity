@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6d9354fdd4d744b910a42deec03400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallImpactSource: {fileID: 4000698285230765016}
+  smallImpactAudioClip: []
 --- !u!1001 &3290161634417640315
 PrefabInstance:
   m_ObjectHideFlags: 0
