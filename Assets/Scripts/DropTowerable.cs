@@ -15,6 +15,7 @@ public class DropTowerable : MonoBehaviour
     GameObject ghostObject;
     AudioSource audioSource;
     bool firstClick;
+    bool noTitle;
 
     void Start() {
         ghostObject = null;
@@ -22,6 +23,12 @@ public class DropTowerable : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         firstClick = true;
         currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
+        noTitle = levelManager.GetInstance().GetDeathCount() > 0;
+        if (noTitle) {
+            foreach (GameObject letter in titleLetters) {
+                Destroy(letter);
+            }
+        }
     }
 
     void Update() {
@@ -48,10 +55,7 @@ public class DropTowerable : MonoBehaviour
                         audioSource.clip = clickSounds[UnityEngine.Random.Range(0, clickSounds.Length)];
                         audioSource.Play();
                         if (firstClick) {
-                            foreach(GameObject letter in titleLetters) {
-                                letter.GetComponent<Animator>().SetBool("Explosion", true);
-                                Destroy(letter, 3);
-                            }
+                            DestroyLetters();
                             firstClick = false;
                         }
                     }
@@ -79,5 +83,14 @@ public class DropTowerable : MonoBehaviour
         Vector3 position = new Vector3(worldPosition.x, 0.1f, worldPosition.z);
         ghostObject = Instantiate<GameObject>(prefab, position, quaternion);
         ghostObject.transform.parent = transform;
+    }
+
+    private void DestroyLetters() {
+        if (noTitle)
+            return;
+        foreach (GameObject letter in titleLetters) {
+            letter.GetComponent<Animator>().SetBool("Explosion", true);
+            Destroy(letter, 3);
+        }
     }
 }
