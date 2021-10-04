@@ -18,11 +18,9 @@ public class WoodRool : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        {
             audioSource.pitch = initSmallImpactPitch + (Random.Range(-1f, 1f));
             audioSource.volume = initSmallImpactVolume + (0.3f * Random.Range(-1f, 1f));
             audioSource.Play();
-        }
     }
 
 }
