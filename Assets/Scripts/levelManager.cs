@@ -65,10 +65,16 @@ public class levelManager : MonoBehaviour
         if (transform.position.y > positionYTarget) {
             transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * cameraSpeed, Space.World);
             if (windAudioSource.volume < 0.8f)
-                windAudioSource.volume += 0.01f;
+                windAudioSource.volume += 0.002f;
         } else if (cameraIsMoving) {
             OnArrive2TheNextLevel();
         }
+        else if (windAudioSource.volume > initWindVolume)
+                windAudioSource.volume -= 0.005f;
+        {
+
+        }
+
     }
 
     public void onGameOver() {
@@ -114,7 +120,6 @@ public class levelManager : MonoBehaviour
         currentTerminator = Instantiate<GameObject>(TerminatorPrefabs, terminatorPosition, Quaternion.identity);
         Destroy(oldTerminator);
 
-        windAudioSource.volume = initWindVolume;
     }
 
     public int GetDeathCount() {
