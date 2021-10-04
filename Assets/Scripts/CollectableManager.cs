@@ -46,11 +46,6 @@ public class CollectableManager : MonoBehaviour
         InstantiateNewCollectable();
         biteSFX.Play();
     }
-    // Idée pour avoir une difficulté qui ne dépende pas du tirage aléatoire de radius. Calculer une variable level de la même façon que la hauteur:
-    // Level = initLevel + (levelBetweenItems*nbItemCollected), tirer au hasard radius et calculer la hauteur du spawn avec height=level-radius/K1 avec K1
-    // un paramètre ajustable.
-    // Comme ça, pour un niveau atteint, vous avez une hauteur de spawn qui dépend linéairement du rayon où ça spawn. Autrement dit: plus c'est loin du
-    // centre plus c'est dur donc plus la hauteur est basse pour compenser.
     private void InstantiateNewCollectable() {
 
         GameObject item = Instantiate<GameObject>(collectablePrefab, transform);
@@ -59,7 +54,9 @@ public class CollectableManager : MonoBehaviour
             radius = 0;
         }
         float angle = Random.Range(0f, 2 * Mathf.PI);
-        item.transform.position = new Vector3(radius * Mathf.Cos(angle), initHeight + (heightBetweenItems * nbItemCollected), radius * Mathf.Sin(angle));
+        float radiusMark = Mathf.Floor(radius / popupMaxRadius * 4);
+        float height = Mathf.Max(initHeight + (heightBetweenItems * (nbItemCollected - radiusMark)), initHeight);
+        item.transform.position = new Vector3(radius * Mathf.Cos(angle),height, radius * Mathf.Sin(angle));
     }
 
     public int GetCollectedItemCount() {
