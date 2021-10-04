@@ -43,6 +43,19 @@ public class PauseManager : MonoBehaviour {
         FindObjectOfType<DropTowerable>().enabled = true;
     }
 
+    void Quit() {
+        Application.Quit();
+    }
+
+    void Restart() {
+        TowerableData[] objs = FindObjectsOfType<TowerableData>();
+        foreach (TowerableData obj in objs) {
+            float angle = Random.Range(0, 45);
+            obj.transform.Rotate(angle, 2*angle, 3*angle);
+        }
+        ResumeGame();
+    }
+
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -50,7 +63,7 @@ public class PauseManager : MonoBehaviour {
             if (!paused) {
                 PauseGame();
                 paused = true;
-                FocusCursorOnvalue(0);
+                SetSelection(0);
             } else {
                 ResumeGame();
                 paused = false;
@@ -68,7 +81,7 @@ public class PauseManager : MonoBehaviour {
                 } else if (indexSelection > 2) {
                     indexSelection = 0;
                 }
-                FocusCursorOnvalue(indexSelection);
+                SetSelection(indexSelection);
             }
             prevVerticalvalue = v;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
@@ -77,7 +90,7 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
-    public void FocusCursorOnvalue(int i) {
+    public void SetSelection(int i) {
         indexSelection = i;
         switch (indexSelection) {
             case 0:
@@ -100,14 +113,15 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
-    void ExecuteSelection() {
+    public void ExecuteSelection() {
         switch (indexSelection) {
             case 0:
                 ResumeGame();
                 paused = false;
                 break;
             case 1:
-                // TODO
+                Restart();
+                paused = false;
                 break;
             case 2:
                 Quit();
@@ -116,9 +130,4 @@ public class PauseManager : MonoBehaviour {
                 break;
         }
     }
-
-    void Quit() {
-        Application.Quit();
-    }
-
 }

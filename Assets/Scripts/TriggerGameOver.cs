@@ -7,8 +7,9 @@ public class TriggerGameOver : MonoBehaviour
 {
 	private levelManager levelManagerScript = null;
 
+
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Towerable") {
+        if (other.gameObject.tag == "GameOverTrigger") {
             if (levelManagerScript != null)
             {
                 levelManagerScript.onGameOver();

@@ -9,6 +9,8 @@ TagManager:
   - canFall
   - Ghost
   - Ground
+  - Object
+  - GameOverTrigger
   layers:
   - Default
   - TransparentFX

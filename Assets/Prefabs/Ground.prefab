@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 5534562207661217756}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: canFall
+  m_TagString: GameOverTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 533872185736560514}
   m_Layer: 0
   m_Name: Bol2
-  m_TagString: canFall
+  m_TagString: GameOverTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

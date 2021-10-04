@@ -19,15 +19,23 @@ public class OnMouseOver : MonoBehaviour
         Vector3 objPos = gameObject.transform.position;
 
         Vector3 targetDir = cursorPos - objPos;
-        Debug.Log("targetDir " + targetDir);
         RectTransform rt = gameObject.GetComponent<RectTransform>();
         Vector2 size = rt.sizeDelta;
-        Debug.Log("size " + size);
 
-        bool isSelected = ((Mathf.Abs(targetDir.x) < size.x) && (Mathf.Abs(targetDir.y) < size.y/2));
-        if (!lastSelectedState & isSelected) {
-            pauseManager.FocusCursorOnvalue(index);
+        bool isSelected = (Mathf.Abs(targetDir.y) < size.y/2);
+        if (isSelected) {
+            if (!lastSelectedState)
+            {
+                pauseManager.SetSelection(index);
+            }
+            
+            bool leftClick = Input.GetMouseButtonDown(0);
+            if (leftClick)
+            {
+                pauseManager.ExecuteSelection();
+            }
         }
+
         lastSelectedState = isSelected;
     }
 }
