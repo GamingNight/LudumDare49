@@ -5,20 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class TriggerGameOver : MonoBehaviour
 {
-	private levelManager levelManagerScript = null;
+    private levelManager levelManagerScript = null;
 
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "GameOverTrigger") {
-            if (levelManagerScript != null)
-            {
+            other.gameObject.tag = "Untagged";
+            if (levelManagerScript != null) {
                 levelManagerScript.onGameOver();
             }
         }
     }
 
-    public void setLevelManager(levelManager obj)
-    {
+    public void setLevelManager(levelManager obj) {
         levelManagerScript = obj;
     }
 }
