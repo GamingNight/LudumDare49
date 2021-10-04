@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
@@ -48,11 +49,26 @@ public class PauseManager : MonoBehaviour {
     }
 
     void Restart() {
-        TowerableData[] objs = FindObjectsOfType<TowerableData>();
+/*        TowerableData[] objs = FindObjectsOfType<TowerableData>();
         foreach (TowerableData obj in objs) {
-            float angle = Random.Range(0, 45);
+            float angle = Random.Range(0, 90);
             obj.transform.Rotate(angle, 2*angle, 3*angle);
         }
+        DropTowerable plane = FindObjectOfType<DropTowerable>();
+        if (plane != null)
+        {
+            Vector3 position = plane.gameObject.transform.localPosition;
+            position.z = position.z +1 ;
+            position.x = position.x + 1;
+            plane.gameObject.transform.localPosition = position;
+            Vector3 angles = plane.gameObject.transform.eulerAngles;
+            angles.z = position.z;
+            angles.x = position.x + 1;
+            plane.gameObject.transform.eulerAngles = angles;
+            //transform.eulerAngles;
+        }
+        */
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ResumeGame();
     }
 
