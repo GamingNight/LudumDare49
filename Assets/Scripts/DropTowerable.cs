@@ -6,11 +6,9 @@ using UnityEngine;
 public class DropTowerable : MonoBehaviour
 {
     public float radiusBoundary;
-    public GameObject[] towerablePrefabs;
     public AudioClip[] clickSounds;
     public GameObject[] titleLetters;
 
-    int currentTowerableIndex;
     Quaternion currentTowerableQuaternion;
     GameObject ghostObject;
     AudioSource audioSource;
@@ -22,7 +20,6 @@ public class DropTowerable : MonoBehaviour
         currentTowerableQuaternion = Quaternion.identity;
         audioSource = GetComponent<AudioSource>();
         firstClick = true;
-        currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
         noTitle = levelManager.GetInstance().GetDeathCount() > 0;
         if (noTitle) {
             foreach (GameObject letter in titleLetters) {
@@ -45,11 +42,11 @@ public class DropTowerable : MonoBehaviour
                 bool leftClick = Input.GetMouseButtonDown(0);
                 if (leftClick) {
                     if (ghostObject != null) {
-                        Instantiate<GameObject>(towerablePrefabs[currentTowerableIndex], ghostObject.transform.position, ghostObject.transform.rotation);
+                        Instantiate<GameObject>(TowerableManager.GetInstance().GetCurrentPrefab(), ghostObject.transform.position, ghostObject.transform.rotation);
                         Destroy(ghostObject);
-                        currentTowerableIndex = UnityEngine.Random.Range(0, towerablePrefabs.Length);
+                        TowerableManager.GetInstance().GenerateNewPrefab();
                         currentTowerableQuaternion = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
-                        GameObject prefab = towerablePrefabs[currentTowerableIndex];
+                        GameObject prefab = TowerableManager.GetInstance().GetCurrentPrefab();
                         GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                         audioSource.clip = clickSounds[UnityEngine.Random.Range(0, clickSounds.Length)];
@@ -61,7 +58,7 @@ public class DropTowerable : MonoBehaviour
                     }
                 } else {
                     if (ghostObject == null) {
-                        GameObject prefab = towerablePrefabs[currentTowerableIndex];
+                        GameObject prefab = TowerableManager.GetInstance().GetCurrentPrefab();
                         GameObject ghostPrefab = prefab.GetComponent<TowerableData>().ghostPrefab;
                         InstantiateNewGhost(worldPosition, ghostPrefab, currentTowerableQuaternion);
                     }

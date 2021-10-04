@@ -12,7 +12,7 @@ public class TowerableManager : MonoBehaviour
 
     public GameObject[] towerablePrefabs;
 
-    private List<GameObject> unlockedTowerables;
+    private int currentPrefabIndex;
 
     private void Awake() {
         if (instance == null) {
@@ -20,14 +20,33 @@ public class TowerableManager : MonoBehaviour
         }
     }
 
-
-
     void Start() {
-        unlockedTowerables = new List<GameObject>();
+
+        Init();
     }
 
-    // Update is called once per frame
-    void Update() {
+    public void Init() {
 
+        GenerateNewPrefab();
+    }
+    public List<GameObject> GetUnlockedPrefabs() {
+
+        List<GameObject> unlockedList = new List<GameObject>();
+
+        foreach (GameObject obj in towerablePrefabs) {
+            if (obj.GetComponent<TowerableData>().howManyItemsToUnlock <= CollectableManager.GetInstance().GetCollectedItemCount()) {
+                unlockedList.Add(obj);
+            }
+        }
+        return unlockedList;
+    }
+
+    public void GenerateNewPrefab() {
+        currentPrefabIndex = Random.Range(0, GetUnlockedPrefabs().Count);
+    }
+
+    public GameObject GetCurrentPrefab() {
+
+        return GetUnlockedPrefabs()[currentPrefabIndex];
     }
 }

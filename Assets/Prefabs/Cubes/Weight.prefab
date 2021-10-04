@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 4186173403967345263, guid: ba0cd791a8b233a46b38035ae9873cc0, type: 3}
-  howManyItemsToUnlock: 4
+  howManyItemsToUnlock: 8
 --- !u!54 &6567727587426140455
 Rigidbody:
   m_ObjectHideFlags: 0

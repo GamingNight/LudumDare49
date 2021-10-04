@@ -84,6 +84,9 @@ public class levelManager : MonoBehaviour
         nextGround = Instantiate<GameObject>(groundPrefabs, new_position, Quaternion.identity);
 
         positionYTarget = positionYTarget - nextLevelOffset;
+
+        CollectableManager.GetInstance().Init();
+        TowerableManager.GetInstance().Init();
     }
 
     private void OnArrive2TheNextLevel() {

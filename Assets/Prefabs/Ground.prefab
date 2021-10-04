@@ -65,16 +65,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiusBoundary: 6
-  towerablePrefabs:
-  - {fileID: 8772228576844675633, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
-  - {fileID: 8772228576844675633, guid: 0239d8241a414c94ea937efac45eb938, type: 3}
-  - {fileID: 8772228576844675633, guid: 16b27ae653ef23949ae41e3594009a6d, type: 3}
-  - {fileID: 8772228576844675633, guid: 1c75a44d1685aaa4eb8699d8eb6281b9, type: 3}
-  - {fileID: 8772228576844675633, guid: dda2166dabe52654a883681e58f7b6db, type: 3}
-  - {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
-  - {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
-  - {fileID: 8772228576844675633, guid: f6a60b1df7986894f9f521c217272fe4, type: 3}
-  - {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
   clickSounds:
   - {fileID: 8300000, guid: 75579110b4e21a540922e4a8be973dbe, type: 3}
   - {fileID: 8300000, guid: e82e24f1c449cba41b26dc3547649ece, type: 3}
@@ -301,7 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   squeaks:
   - {fileID: 8300000, guid: 1f1b9536c91f83e40ae62720cc023e04, type: 3}
-  - {fileID: 8300000, guid: 5ca976782b1135a4488e0b40315b3c8a, type: 3}
   - {fileID: 8300000, guid: c0d2ca630f8809041a4f55f8e9794439, type: 3}
   - {fileID: 8300000, guid: 01cdaf8633d36e44aac9a6f3ea7c5f75, type: 3}
 --- !u!82 &5534562207661217756

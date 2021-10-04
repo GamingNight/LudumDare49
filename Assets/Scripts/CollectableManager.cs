@@ -18,7 +18,6 @@ public class CollectableManager : MonoBehaviour
     private int nbItemCollected;
     private float initHeight;
     private float heightOffset;
-    private int lastDeathCount;
 
     private void Awake() {
         if (instance == null) {
@@ -29,22 +28,13 @@ public class CollectableManager : MonoBehaviour
     private void Start() {
         nbItemCollected = 0;
         heightOffset = 1;
-        lastDeathCount = 0;
         Init();
     }
 
-    private void Init() {
+    public void Init() {
         nbItemCollected = 0;
         initHeight = heightOffset - (levelManager.GetInstance().nextLevelOffset * levelManager.GetInstance().GetDeathCount());
         InstantiateNewCollectable();
-    }
-
-    private void Update() {
-        int deatCount = levelManager.GetInstance().GetDeathCount();
-        if (lastDeathCount != deatCount) {
-            Init();
-            lastDeathCount = deatCount;
-        }
     }
 
     public void CollectItem(GameObject collectable) {
@@ -62,5 +52,10 @@ public class CollectableManager : MonoBehaviour
         }
         float angle = Random.Range(0f, 2 * Mathf.PI);
         item.transform.position = new Vector3(radius * Mathf.Cos(angle), initHeight + (heightBetweenItems * nbItemCollected), radius * Mathf.Sin(angle));
+    }
+
+    public int GetCollectedItemCount() {
+
+        return nbItemCollected;
     }
 }

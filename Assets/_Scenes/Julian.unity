@@ -218,7 +218,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f16d95038e00349bc37b0d2d96c0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerablePrefabs: []
+  towerablePrefabs:
+  - {fileID: 8772228576844675633, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
+  - {fileID: 8772228576844675633, guid: f6a60b1df7986894f9f521c217272fe4, type: 3}
+  - {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
+  - {fileID: 8772228576844675633, guid: 1c75a44d1685aaa4eb8699d8eb6281b9, type: 3}
+  - {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
+  - {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
+  - {fileID: 8772228576844675633, guid: 16b27ae653ef23949ae41e3594009a6d, type: 3}
+  - {fileID: 8772228576844675633, guid: 0239d8241a414c94ea937efac45eb938, type: 3}
+  - {fileID: 8772228576844675633, guid: dda2166dabe52654a883681e58f7b6db, type: 3}
 --- !u!4 &928702679
 Transform:
   m_ObjectHideFlags: 0
