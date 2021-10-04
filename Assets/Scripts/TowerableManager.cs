@@ -29,6 +29,8 @@ public class TowerableManager : MonoBehaviour
     private float initPitch;
     private float initVolume;
 
+    private bool firstTimeNewSound;
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -45,19 +47,29 @@ public class TowerableManager : MonoBehaviour
     }
 
     public void Init() {
-
+        firstTimeNewSound = true;
         GenerateNewPrefab();
     }
     private List<TowerableStruct> GetUnlockedPrefabs() {
 
         List<TowerableStruct> unlockedList = new List<TowerableStruct>();
-
         foreach (TowerableStruct t in towerables) {
             if (t.howManyItemsToUnlock <= CollectableManager.GetInstance().GetCollectedItemCount()) {
                 unlockedList.Add(t);
             }
         }
         return unlockedList;
+    }
+
+    private List<TowerableStruct> GetPrefabsAtUnlockLevel(int level) {
+
+        List<TowerableStruct> list = new List<TowerableStruct>();
+        foreach (TowerableStruct t in towerables) {
+            if (t.howManyItemsToUnlock == level) {
+                list.Add(t);
+            }
+        }
+        return list;
     }
 
     public void GenerateNewPrefab() {
@@ -77,7 +89,7 @@ public class TowerableManager : MonoBehaviour
 
     public void PlaySound() {
 
-        if (howManyItemsToUnlockSound > CollectableManager.GetInstance().GetCollectedItemCount()) {
+        if (howManyItemsToUnlockSound > CollectableManager.GetInstance().GetCollectedItemCount() || (firstTimeNewSound && unlockedTowerables[currentPrefabIndex].howManyItemsToUnlock == 0)) {
             audioSource.clip = initSound;
             audioSource.pitch = initPitch + (0.2f * Random.Range(-1f, 1f));
             audioSource.volume = initVolume + (0.1f * Random.Range(-1f, 1f));
@@ -87,6 +99,7 @@ public class TowerableManager : MonoBehaviour
             audioSource.pitch = initPitch;
             audioSource.volume = initVolume;
             audioSource.Play();
+            firstTimeNewSound = false;
         }
     }
 }
