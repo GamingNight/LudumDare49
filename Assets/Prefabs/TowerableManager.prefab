@@ -68,7 +68,7 @@ MonoBehaviour:
     howManyItemsToUnlock: 5
   - prefab: {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
     ghost: {fileID: 4186173403967345263, guid: 1350468ce7cbf434da9ebdf9dbb506ff, type: 3}
-    howManyItemsToUnlock: 6
+    howManyItemsToUnlock: 8
   - prefab: {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
     ghost: {fileID: 4186173403967345263, guid: 0936ffa57c6216d458fcb7138b4d5064, type: 3}
     howManyItemsToUnlock: 6
