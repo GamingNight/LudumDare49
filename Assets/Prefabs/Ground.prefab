@@ -74,6 +74,7 @@ MonoBehaviour:
   - {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
   - {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
   - {fileID: 8772228576844675633, guid: f6a60b1df7986894f9f521c217272fe4, type: 3}
+  - {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
   clickSounds:
   - {fileID: 8300000, guid: 75579110b4e21a540922e4a8be973dbe, type: 3}
   - {fileID: 8300000, guid: e82e24f1c449cba41b26dc3547649ece, type: 3}
