@@ -63,7 +63,6 @@ public class DropTowerable : MonoBehaviour
                     bool rightClickDown = Input.GetKeyDown(KeyCode.Mouse1);
                     bool rightClickHeld = Input.GetKey(KeyCode.Mouse1);
                     bool rightClick = rightClickDown || rightClickHeld;
-                    Debug.Log("rightClick " + rightClick);
                     if (rightClick)
                     {
                         ghostObject.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);

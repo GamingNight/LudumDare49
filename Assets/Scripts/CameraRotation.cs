@@ -60,13 +60,6 @@ public class CameraRotation : MonoBehaviour
 
     void UpdateTrueSpeedY()
     {
-        bool space_down = Input.GetKeyDown(KeyCode.Space);
-        bool space_held = Input.GetKey(KeyCode.Space);
-        bool space_up = Input.GetKeyUp(KeyCode.Space);
-        if (space_down || space_held || space_up)
-        {
-            true_speed_y = controler_speed_coef * speed;
-        }
         bool left_down = Input.GetKeyDown(KeyCode.LeftArrow);
         bool left_held = Input.GetKey(KeyCode.LeftArrow);
         bool left_up = Input.GetKeyUp(KeyCode.LeftArrow);
