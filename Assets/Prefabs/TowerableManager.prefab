@@ -45,36 +45,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerables:
-  - prefab: {fileID: 8772228576844675633, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: d7c5753665725394cbaac899b5f9f064, type: 3}
-    howManyItemsToUnlock: 4
-  - prefab: {fileID: 8772228576844675633, guid: f6a60b1df7986894f9f521c217272fe4, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: c1de707f496f6664abf4d8a56f564f51, type: 3}
-    howManyItemsToUnlock: 4
-  - prefab: {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: 0936ffa57c6216d458fcb7138b4d5064, type: 3}
-    howManyItemsToUnlock: 4
   - prefab: {fileID: 8772228576844675633, guid: 1c75a44d1685aaa4eb8699d8eb6281b9, type: 3}
     ghost: {fileID: 4186173403967345263, guid: d12a107d3069c8242b9f5ac7ae2de9e7, type: 3}
     howManyItemsToUnlock: 0
-  - prefab: {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: 1350468ce7cbf434da9ebdf9dbb506ff, type: 3}
-    howManyItemsToUnlock: 8
-  - prefab: {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: 0c6468ff2db02554d9b849e67cbe5455, type: 3}
-    howManyItemsToUnlock: 6
-  - prefab: {fileID: 8772228576844675633, guid: 16b27ae653ef23949ae41e3594009a6d, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: 0a2040b45d2c26341a311d17bf5335fe, type: 3}
-    howManyItemsToUnlock: 6
   - prefab: {fileID: 8772228576844675633, guid: 0239d8241a414c94ea937efac45eb938, type: 3}
     ghost: {fileID: 4186173403967345263, guid: fd35090447156ca459f11f49f45b3cc5, type: 3}
-    howManyItemsToUnlock: 0
+    howManyItemsToUnlock: 1
+  - prefab: {fileID: 8772228576844675633, guid: e9b6a5de7c61dc84d94db1602990623f, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: 2b36e9951b7b5634d90551514b2d7658, type: 3}
+    howManyItemsToUnlock: 2
+  - prefab: {fileID: 8772228576844675633, guid: 8eb85a7b10358ca48b2488913a2116c2, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: d7c5753665725394cbaac899b5f9f064, type: 3}
+    howManyItemsToUnlock: 3
+  - prefab: {fileID: 8772228576844675633, guid: 16b27ae653ef23949ae41e3594009a6d, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: 0a2040b45d2c26341a311d17bf5335fe, type: 3}
+    howManyItemsToUnlock: 4
+  - prefab: {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: 0c6468ff2db02554d9b849e67cbe5455, type: 3}
+    howManyItemsToUnlock: 5
+  - prefab: {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: 0936ffa57c6216d458fcb7138b4d5064, type: 3}
+    howManyItemsToUnlock: 6
+  - prefab: {fileID: 8772228576844675633, guid: f6a60b1df7986894f9f521c217272fe4, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: c1de707f496f6664abf4d8a56f564f51, type: 3}
+    howManyItemsToUnlock: 7
   - prefab: {fileID: 8772228576844675633, guid: dda2166dabe52654a883681e58f7b6db, type: 3}
     ghost: {fileID: 4186173403967345263, guid: ba0cd791a8b233a46b38035ae9873cc0, type: 3}
     howManyItemsToUnlock: 8
-  - prefab: {fileID: 8772228576844675633, guid: e9b6a5de7c61dc84d94db1602990623f, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: 2b36e9951b7b5634d90551514b2d7658, type: 3}
-    howManyItemsToUnlock: 0
+  - prefab: {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: 1350468ce7cbf434da9ebdf9dbb506ff, type: 3}
+    howManyItemsToUnlock: 9
   howManyItemsToUnlockSound: 4
   clickSounds:
   - {fileID: 8300000, guid: 75579110b4e21a540922e4a8be973dbe, type: 3}
