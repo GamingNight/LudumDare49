@@ -5304,8 +5304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db120befefd9c9439a09dc185b7a8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 100
-  power: 90
+  radius: 150
+  power: 150
   meche: 2
   clip: {fileID: 8300000, guid: 3b5ef4b67b1a6214da646f870cf491ec, type: 3}
   shape: {fileID: 2856641566327962272}

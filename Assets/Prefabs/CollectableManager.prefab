@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectablePrefab: {fileID: 2190280804467503549, guid: 35296503de009e442a387caa24346dcf, type: 3}
   popupMaxRadius: 5.5
-  heightBetweenItems: 0.5
+  heightBetweenItems: 0.4
 --- !u!82 &7203501386538403888
 AudioSource:
   m_ObjectHideFlags: 0

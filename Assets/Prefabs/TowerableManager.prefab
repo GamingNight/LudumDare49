@@ -66,6 +66,9 @@ MonoBehaviour:
   - prefab: {fileID: 8772228576844675633, guid: 481a6a1cc0e71af45b92b1e4c180dbe1, type: 3}
     ghost: {fileID: 4186173403967345263, guid: 0c6468ff2db02554d9b849e67cbe5455, type: 3}
     howManyItemsToUnlock: 5
+  - prefab: {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
+    ghost: {fileID: 4186173403967345263, guid: 1350468ce7cbf434da9ebdf9dbb506ff, type: 3}
+    howManyItemsToUnlock: 6
   - prefab: {fileID: 8772228576844675633, guid: ff4b87a9049ac9b4f8772eabc39484fb, type: 3}
     ghost: {fileID: 4186173403967345263, guid: 0936ffa57c6216d458fcb7138b4d5064, type: 3}
     howManyItemsToUnlock: 6
@@ -75,12 +78,9 @@ MonoBehaviour:
   - prefab: {fileID: 8772228576844675633, guid: dda2166dabe52654a883681e58f7b6db, type: 3}
     ghost: {fileID: 4186173403967345263, guid: ba0cd791a8b233a46b38035ae9873cc0, type: 3}
     howManyItemsToUnlock: 8
-  - prefab: {fileID: 8772228576844675633, guid: cdb0ae27061b82b4aae1bac4539dd2cf, type: 3}
-    ghost: {fileID: 4186173403967345263, guid: 1350468ce7cbf434da9ebdf9dbb506ff, type: 3}
-    howManyItemsToUnlock: 9
   - prefab: {fileID: 8772228576844675633, guid: 314d9893139ef0943937324473dc4782, type: 3}
     ghost: {fileID: 4186173403967345263, guid: c4d9f46fad4dd8145a7ebb3468908a39, type: 3}
-    howManyItemsToUnlock: 10
+    howManyItemsToUnlock: 9
   howManyItemsToUnlockSound: 4
   clickSounds:
   - {fileID: 8300000, guid: 75579110b4e21a540922e4a8be973dbe, type: 3}
