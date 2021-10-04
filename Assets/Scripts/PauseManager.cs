@@ -10,6 +10,8 @@ public class PauseManager : MonoBehaviour {
     public Text resumeText;
     public Text restartText;
     public Text quitText;
+    public Color defaultColor;
+    public Color highLightColor;
 
     private bool paused = false;
     private List<AudioSource> pausedAudioSources;
@@ -111,18 +113,33 @@ public class PauseManager : MonoBehaviour {
         switch (indexSelection) {
             case 0:
                 resumeText.fontStyle = FontStyle.Bold;
+                resumeText.color = highLightColor;
+
                 restartText.fontStyle = FontStyle.Normal;
+                restartText.color = defaultColor;
+
                 quitText.fontStyle = FontStyle.Normal;
+                quitText.color = defaultColor;
                 break;
             case 1:
                 resumeText.fontStyle = FontStyle.Normal;
+                resumeText.color = defaultColor;
+
                 restartText.fontStyle = FontStyle.Bold;
+                restartText.color = highLightColor;
+
                 quitText.fontStyle = FontStyle.Normal;
+                quitText.color = defaultColor;
                 break;
             case 2:
                 resumeText.fontStyle = FontStyle.Normal;
+                resumeText.color = defaultColor;
+
                 restartText.fontStyle = FontStyle.Normal;
+                restartText.color = defaultColor;
+
                 quitText.fontStyle = FontStyle.Bold;
+                quitText.color = highLightColor;
                 break;
             default:
                 break;
