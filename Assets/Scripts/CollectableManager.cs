@@ -54,8 +54,8 @@ public class CollectableManager : MonoBehaviour
             radius = 0;
         }
         float angle = Random.Range(0f, 2 * Mathf.PI);
-        float radiusMark = Mathf.Floor(radius / popupMaxRadius * 4);
-        float height = Mathf.Max(initHeight + (heightBetweenItems * (nbItemCollected - radiusMark)), initHeight);
+        float radiusMark = Mathf.Floor(Mathf.Pow(radius / popupMaxRadius * 3,1f));
+        float height = Mathf.Max(initHeight + (heightBetweenItems * nbItemCollected/(1f+radiusMark)), initHeight);
         item.transform.position = new Vector3(radius * Mathf.Cos(angle),height, radius * Mathf.Sin(angle));
     }
 
