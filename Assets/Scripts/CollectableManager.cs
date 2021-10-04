@@ -6,6 +6,8 @@ public class CollectableManager : MonoBehaviour
 {
     private static CollectableManager instance;
 
+    private AudioSource biteSFX;
+
     public static CollectableManager GetInstance() {
 
         return instance;
@@ -28,6 +30,7 @@ public class CollectableManager : MonoBehaviour
     private void Start() {
         nbItemCollected = 0;
         heightOffset = 1;
+        biteSFX = GetComponent<AudioSource>();
         Init();
     }
 
@@ -41,6 +44,7 @@ public class CollectableManager : MonoBehaviour
         nbItemCollected++;
         Destroy(collectable);
         InstantiateNewCollectable();
+        biteSFX.Play();
     }
 
     private void InstantiateNewCollectable() {
