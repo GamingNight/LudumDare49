@@ -6,8 +6,12 @@ public class Explosion : MonoBehaviour
 {
     public float radius;
     public float power;
+    public float meche;
 
     private AudioSource audioData;
+    private Rigidbody rb;
+    public GameObject shape;
+    public GameObject explosion;
 
     private float timer;
     private bool exploded;
@@ -16,14 +20,16 @@ public class Explosion : MonoBehaviour
     {
         timer = 0;
         audioData = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
         exploded = false;
+        explosion.SetActive(false);
     }
 
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer > 1 && !exploded)
+        if (timer > meche && !exploded)
         {
             Boom();
             exploded = true;
@@ -33,7 +39,12 @@ public class Explosion : MonoBehaviour
     void Boom()
     {
 
+        Destroy(gameObject, 2);
+
         audioData.Play();
+        shape.SetActive(false);
+        explosion.SetActive(true);
+        rb.isKinematic = true;
 
         //Physic
         Vector3 explosionPos = transform.position;
