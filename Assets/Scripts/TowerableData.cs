@@ -7,4 +7,5 @@ public class TowerableData : MonoBehaviour
 {
 
     public GameObject ghostPrefab;
+    public int howManyItemsToUnlock = 0;
 }
