@@ -64,21 +64,16 @@ public class levelManager : MonoBehaviour
 
         if (transform.position.y > positionYTarget) {
             transform.Translate(new Vector3(0, -1, 0) * Time.deltaTime * cameraSpeed, Space.World);
-            if (transform.position.y > (positionYTarget + nextLevelOffset/3)
-                && (windAudioSource.volume < 0.8f))
-            {
+            if (transform.position.y > (positionYTarget + nextLevelOffset / 3)
+                && (windAudioSource.volume < 0.8f)) {
                 windAudioSource.volume += 0.003f;
-            }
-            else if (transform.position.y < (positionYTarget + nextLevelOffset/3)
-                && (windAudioSource.volume > initWindVolume))
-            {
+            } else if (transform.position.y < (positionYTarget + nextLevelOffset / 3)
+                  && (windAudioSource.volume > initWindVolume)) {
                 windAudioSource.volume -= 0.003f;
             }
         } else if (cameraIsMoving) {
             OnArrive2TheNextLevel();
-        }
-        else if (windAudioSource.volume > initWindVolume)
-        {
+        } else if (windAudioSource.volume > initWindVolume) {
             windAudioSource.volume -= 0.005f;
         }
 
@@ -100,6 +95,7 @@ public class levelManager : MonoBehaviour
 
         CollectableManager.GetInstance().Init();
         TowerableManager.GetInstance().Init();
+        MusicManager.GetInstance().Init();
     }
 
     private void OnArrive2TheNextLevel() {

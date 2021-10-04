@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 6567727587426140455}
   - component: {fileID: 3183369294205577123}
   - component: {fileID: -8251607211857224847}
+  - component: {fileID: 110682824812867762}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Object
@@ -234,10 +235,10 @@ AudioSource:
   m_GameObject: {fileID: 8772228576844675633}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.3
+  OutputAudioMixerGroup: {fileID: 3973869446162599004, guid: b83fea03599d29349955c6a78d6b6fd8, type: 2}
+  m_audioClip: {fileID: 8300000, guid: ef06f308f3720c14faa872798f5503a4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.217
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -321,3 +322,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &110682824812867762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772228576844675633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89d159ab1b264741abaa2b761fcc7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
